@@ -1,0 +1,60 @@
+
+  #mapL {
+  margin-bottom:10px;
+            height: 100%; width: 100%; min-height:300px;
+            -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+  /* Optional: Makes the sample page fill the window. */
+ .body{
+ background-color: #E5E5E5;
+ }
+ .listGP{
+ overflow-y:scroll;
+ height:250px;
+ }
+ html,body{
+ 	font-size: 12px !important;
+	height:100%;
+	padding-top:10px;
+	font-family: Roboto;
+	
+}
+h1, h2{
+	text-align:center;
+	weight:700;
+}
+
+p{
+	font-size:12px !important;
+}
+.boite-simple{
+	margin-bottom:15px;
+	background-color:#fff;
+	padding:5px;
+}
+.footer-box{
+	background-color:#fff;
+	padding:0px;
+	//margin:5px 10px 0px 10px;
+
+}
+.navigation{
+	height:fit-content;
+}
+.logo{
+	text-align:center;
+}
+.boite-liste{
+	text-align:center;
+	width:100%;
+	margin-bottom:10px;
+}
+.mapConteneur {
+	height:100%;
+	max-height:600px;
+	width:100%;
+    border-radius:37px;
+}
