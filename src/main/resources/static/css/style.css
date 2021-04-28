@@ -40,6 +40,7 @@ p {
 
 .boite-simple {
     margin-bottom: 15px;
+    border-radius: 3px;
     background-color: #fff;
     padding: 5px;
 }
