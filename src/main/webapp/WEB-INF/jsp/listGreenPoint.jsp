@@ -29,7 +29,7 @@
 			<div class="col-md-6 listGP">
 			
 					<div class="row">
-				<c:forEach var="greenPoint" items="${param.greenPoints}">
+				<c:forEach var="greenPoint" items="${requestScope.greenPoints}">
 						<div class="col-xl-9">
 							<span class="fa fa-map-marker"></span>
 								<span>
@@ -113,11 +113,11 @@
     	});
         var markersCluster = new L.MarkerClusterGroup();
         
-        <c:forEach var="greenPoint" items="${dao.getAllGreenPoints()}">
+        <c:forEach var="greenPoint" items="${requestScope.greenPoints}">
         	var latLng = new L.LatLng(parseFloat("${greenPoint.latitude}"), parseFloat("${greenPoint.longitude}"));
-        	var marker = new L.Marker(latLng, {icon: greenIcon},{id:"${greenPoint.greenPointId}"}, {title: "GreenPoint n°"+"${greenPoint.greenPointId}"}).bindPopup("<h1>GreenPoint n°"+"${greenPoint.greenPointId}"+"</h1><p>"+"${greenPoint.description}"+"</p>");
+        	var marker = new L.Marker(latLng, {icon: greenIcon},{id:"${greenPoint.idGreenPoint}"}, {title: "GreenPoint n°"+"${greenPoint.idGreenPoint}"}).bindPopup("<h1>GreenPoint n°"+"${greenPoint.idGreenPoint}"+"</h1><p>"+"${greenPoint.description}"+"</p>");
             markersCluster.addLayer(marker);
-        	//locations.push({location:{lat:parseFloat("${greenPoint.latitude}"),lng:parseFloat("${greenPoint.longitude}")},id:"${greenPoint.greenPointId}", description:"${greenPoint.description}"});
+        	//locations.push({location:{lat:parseFloat("${greenPoint.latitude}"),lng:parseFloat("${greenPoint.longitude}")},id:"${greenPoint.idGreenPoint}", description:"${greenPoint.description}"});
   		</c:forEach>
 
         map.addLayer(markersCluster); 
