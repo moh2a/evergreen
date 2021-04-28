@@ -25,4 +25,9 @@ public class GreenPointController {
 		model.addAttribute("greenPoints", greenPoints);
         return "index";
     }
+	@RequestMapping(value = "/add-greenpoint", method = RequestMethod.GET)
+	public String newGreenPoint() {
+		System.out.println("ici");
+	    return "newGreenPoint";
+	}
 }

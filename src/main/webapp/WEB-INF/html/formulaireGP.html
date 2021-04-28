@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="ISO-8859-1">
-    <title>Ever green</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/newGreenPoint.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-
-<body>
-    <h1>Crï¿½ation d'un Green Point</h1>
+<div class="boite-simple">
+    <h1></h1>
+    Création d'un Green Point</h1>
     <div class="card">
         <div class="card-header">Formulaire</div>
         <div class="card-body">
             <form id="myform" method="POST" action="#" onsubmit="return checkphoto(this)">
                 <div class="form-group">
-                    <label for="Coordonnees">Coordonnï¿½es : cliquez sur la carte pour ajouter un marqueur</label>
+                    <label for="Coordonnees">Coordonnées : cliquez sur la carte pour ajouter un marqueur</label>
                     <div id="map" #map></div>
                     <div>
                         <button class="btn btn-primary" onClick="markerAtMyPosition()">Votre position</button>
@@ -40,9 +30,6 @@
             </form>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCngiFaNOdhbpMTg2Bvj6q16K-RiaTbPjM&callback=initMap&libraries=&v=weekly" async></script>
-    <script type="text/javascript" src="javascript/map.js"></script>
-</body>
-
-</html>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCngiFaNOdhbpMTg2Bvj6q16K-RiaTbPjM&callback=initMap&libraries=&v=weekly" async></script>
