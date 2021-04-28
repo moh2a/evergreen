@@ -4,6 +4,18 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+
+# Eclipse .classpath .project .settings/ 
+
+
+# Intellij .idea/ *.iml *.iws  
+
+
+# Mac 
+.DS_Store 
+# Maven
+log/ 
+target/
 ### STS ###
 .apt_generated
 .classpath
