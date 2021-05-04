@@ -8,7 +8,7 @@
 			<%@include  file="../html/navigation.html" %>
 		</div>
 		<div class="col-xl-7 col-lg-8 col-xs-12 px-1">
-			<%@include  file="../html/formulaireGP.html" %>
+			<%@include  file="formulaireGP.jsp" %>
 		</div>
 		
 		<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 px-1">
@@ -29,5 +29,5 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="<%=request.getContextPath()%>/javascript/map.js"></script>
+<!--<script type="text/javascript" src="<%=request.getContextPath()%>/javascript/map.js"></script>-->
 <%@include  file="../html/footer.html" %>

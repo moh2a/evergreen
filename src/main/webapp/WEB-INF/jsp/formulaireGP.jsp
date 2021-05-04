@@ -7,14 +7,17 @@
             <form id="myform" method="POST" action="#" onsubmit="return checkphoto(this)">
                 <div class="form-group">
                     <label for="Coordonnees">Coordonnées : cliquez sur la carte pour ajouter un marqueur</label>
-                    <div id="map" #map></div>
+                    <jsp:include page="listGreenPoint.jsp">
+			            <jsp:param name="greenPoints" value="{$greenPoints}" />
+            			<jsp:param name="mode" value="form" />
+			        </jsp:include>
                     <div>
                         <button class="btn btn-primary" onClick="markerAtMyPosition()">Votre position</button>
                     </div>
                     <label for="latitude">Latitude : </label>
-                    <input id="lat" type="number" step="0.0001" class="form-control" id="latitude" required>
+                    <input #lat id="lat" type="number" step="0.0001" class="form-control" id="latitude" required>
                     <label for="longitude">Longitude : </label>
-                    <input id="lng" type="number" step="0.0001" class="form-control" id="longitude" required>
+                    <input #lng id="lng" type="number" step="0.0001" class="form-control" id="longitude" required>
                     <div class="valid-feedback">Valide.</div>
                     <div class="invalid-feedback">Veuillez renseigner un lieux s'il-vous-plait.</div>
                 </div>
@@ -32,4 +35,6 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCngiFaNOdhbpMTg2Bvj6q16K-RiaTbPjM&callback=initMap&libraries=&v=weekly" async></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCngiFaNOdhbpMTg2Bvj6q16K-RiaTbPjM&callback=initMap&libraries=&v=weekly" async></script>
+--><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
