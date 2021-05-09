@@ -151,7 +151,7 @@
         
         <c:forEach var="greenPoint" items="${requestScope.greenPoints}">
         	var latLng = new L.LatLng(parseFloat("${greenPoint.latitude}"), parseFloat("${greenPoint.longitude}"));
-        	var marker = new L.Marker(latLng, {icon: greenIcon},{id:"${greenPoint.idGreenPoint}"}, {title: "GreenPoint n°"+"${greenPoint.idGreenPoint}"}).bindPopup("<h1>GreenPoint n°"+"${greenPoint.idGreenPoint}"+"</h1><p>"+"${greenPoint.description}"+"</p>");
+        	var marker = new L.Marker(latLng, {icon: greenIcon},{id:"${greenPoint.idGreenPoint}"}, {title: "GreenPoint n°"+"${greenPoint.idGreenPoint}"}).bindPopup("<h1>GreenPoint n°"+"${greenPoint.idGreenPoint}"+"</h1><a href=\"green-point?ref=${greenPoint.idGreenPoint}\">"+"En savoir plus"+"</a>");
             markersCluster.addLayer(marker);
         	//locations.push({location:{lat:parseFloat("${greenPoint.latitude}"),lng:parseFloat("${greenPoint.longitude}")},id:"${greenPoint.idGreenPoint}", description:"${greenPoint.description}"});
   		</c:forEach>

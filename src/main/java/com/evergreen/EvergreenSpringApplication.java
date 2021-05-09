@@ -13,7 +13,7 @@ public class EvergreenSpringApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx =SpringApplication.run(EvergreenSpringApplication.class, args);
 		GreenPointRepository greenPointDao = ctx.getBean(GreenPointRepository.class);
-		greenPointDao.save(new GreenPoint("premier green point", new Float(48.8811), new  Float(2.3500)));
+		greenPointDao.save(new GreenPoint("premier green point", new Float(48.8811), new  Float(2.3500),"greenPointAvant.jpg",null));
 		greenPointDao.findAll().forEach(t->System.out.println(t.getDescription()));
 				
 	}
