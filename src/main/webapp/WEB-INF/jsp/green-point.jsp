@@ -10,11 +10,16 @@
 		<div class="col-xl-7 col-lg-8 col-xs-12 px-1">
 			<div class="boite-simple">
 				<h1>Green Point</h1>
-				<h2>Position : </h2>
-				<h2>Description : ${greenPoint.description}</h2>
-				<h3>Photo(s) : </h3>
-				<img src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}"/>
-				<p></p>
+				<div class="card" style="width:400px">
+				  <img class="card-img-top" style="height:400px" src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}" alt="Card image">
+				  <div class="card-body">
+				    <h4 class="card-title">Présentation du GreenPoint</h4>
+				    <p class="card-text">${greenPoint.description}</p>
+				    <a href="#" class="btn btn-primary">Nettoyer ce GreenPoint</a>
+				  </div>
+				</div>
+				<!-- <img src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}"/>
+				<p></p> -->
 			</div>
 		</div>
 		

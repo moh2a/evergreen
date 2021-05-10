@@ -13,18 +13,21 @@ public class GreenPoint implements Serializable {
   @GeneratedValue
   private Long idGreenPoint;
 
-  @Column(length = 100)
+  @Column(length = 500)
   private String description;
   @Column(nullable = true,length = 100)
   private String photo_avant;
+  @Column(length = 20)
+  private String statut;
   @Column(nullable = true,length = 100)
   private String photo_apres;
   private Float latitude;
   private Float longitude;
 
-  public GreenPoint(String description, Float latitude, Float longitude, String photo_avant, String photo_apres) {
+  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres) {
     this.description = description;
     this.latitude = latitude;
+    this.statut = statut;
     this.longitude = longitude;
     this.photo_avant = photo_avant;
     this.photo_apres = photo_apres;

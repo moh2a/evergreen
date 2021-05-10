@@ -60,7 +60,7 @@ public class GreenPointController {
 				model.addAttribute("latitude",latitude);
 				model.addAttribute("longitude",longitude);
 				model.addAttribute("description",description);
-				GreenPoint greenPoint = new GreenPoint(description,latitude, longitude, fileName, null);
+				GreenPoint greenPoint = new GreenPoint(description,"actif",latitude, longitude, fileName, null);
 				greenPointDao.save(greenPoint);
 				if(multipartFile!=null) {
 					String uploadDir = "src/main/resources/static/images/photos_avant/" + greenPoint.getIdGreenPoint();
