@@ -63,10 +63,10 @@ public class GreenPointController {
 				GreenPoint greenPoint = new GreenPoint(description,latitude, longitude, fileName, null);
 				greenPointDao.save(greenPoint);
 				if(multipartFile!=null) {
-					String uploadDir = "photos_avant/" + greenPoint.getIdGreenPoint();
+					String uploadDir = "src/main/resources/static/images/photos_avant/" + greenPoint.getIdGreenPoint();
 			        FileUpload.saveFile(uploadDir, fileName, multipartFile);
 				}
-				return "greenPoint/"+greenPoint.getIdGreenPoint();
+				return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
 				
 			}
 	

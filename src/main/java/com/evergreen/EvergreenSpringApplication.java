@@ -17,5 +17,6 @@ public class EvergreenSpringApplication {
 		greenPointDao.findAll().forEach(t->System.out.println(t.getDescription()));
 				
 	}
+	
 
 }

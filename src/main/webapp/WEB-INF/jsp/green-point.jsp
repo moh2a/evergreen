@@ -13,6 +13,7 @@
 				<h2>Position : </h2>
 				<h2>Description : ${greenPoint.description}</h2>
 				<h3>Photo(s) : </h3>
+				<img src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}"/>
 				<p></p>
 			</div>
 		</div>
