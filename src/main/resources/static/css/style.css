@@ -110,3 +110,15 @@ p {
     margin: 6px 0;
     transition: 0.4s;
 }
+.participer{
+	width: 112px;
+	height: 48px;
+	
+}
+.icone-localisation{
+	color: #C4C4C4;
+}
+.bouton-evergreen{
+	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #C4C4C4;
+	border-radius: 50px;
+}

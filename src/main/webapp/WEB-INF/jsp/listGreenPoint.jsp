@@ -8,11 +8,11 @@
 			<div class="col-lg-6">
 					<div class="input-group mb-3">
 					    <div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+							<span class="input-group-text bouton-evergreen"><i class="fa fa-map-marker"></i></span>
 					    </div>
 						<input type="text" id="adresse" class="form-control" placeholder="Enter Name Here" >
 						<div class="input-group-append">
-					      <button onclick="getCoordonnees()" class="input-group-text">Rechercher</button>
+					      <button onclick="getCoordonnees()" class="input-group-text bouton-evergreen">Rechercher</button>
 					    </div>
 					</div>
 			</div>
@@ -30,8 +30,12 @@
 				<div class="row">
 				
 				<c:forEach var="greenPoint" items="${requestScope.greenPoints}">
-						<div class="col-xl-9">
-							<span class="fa fa-map-marker"></span>
+						<div class="col-xl-1">
+							<span class=" icone-localisation ">
+								<i class="fa fa-map-marker fa-3x"></i>
+							</span>
+						</div>
+						<div class="col-xl-6">
 								<span>
 									<div>
 										<h3>Titre du green point - 2 points</h3>
@@ -41,8 +45,8 @@
 								</span>
 							
 						</div>
-						<div class="col-xl-3">
-							<button>Participer</button>
+						<div class="col-xl-5">
+							<button class="bouton-evergreen participer">Participer</button>
 						</div>
 				</c:forEach>
 				
