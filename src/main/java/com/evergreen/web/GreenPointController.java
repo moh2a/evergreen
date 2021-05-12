@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-import org.isep.entities.Team;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,7 +71,7 @@ public class GreenPointController {
 				return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
 				
 			}
-	@RequestMapping(value = "/edit-greenpoint", method = RequestMethod.PUT)
+	@RequestMapping(value = "/green-point", method = RequestMethod.PUT)
 	public String edit(Model model, 
 			@RequestParam(name = "latitude", defaultValue = "0.0") Float latitude,
 			@RequestParam(name = "longitude", defaultValue = "0") Float longitude,
