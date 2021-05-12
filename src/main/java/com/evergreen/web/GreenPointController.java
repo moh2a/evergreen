@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import org.isep.entities.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +23,6 @@ import util.FileUpload;
 public class GreenPointController {
 	@Autowired
 	private GreenPointRepository greenPointDao;
-	@RequestMapping(value = "/teams/search")
-	public String search() {
-	return "myteams";
-	}
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
 		List<GreenPoint> greenPoints = greenPointDao.findAll();
@@ -34,16 +31,21 @@ public class GreenPointController {
     }
 	@RequestMapping(value = "/add-greenpoint", method = RequestMethod.GET)
 	public String newGreenPoint() {
-		System.out.println("ici");
 	    return "newGreenPoint";
 	}
-	@RequestMapping(value = "green-point")
+	@RequestMapping(value = "green-point", method = RequestMethod.GET)
 	public String viewGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
 	Long idGreenPoint,@RequestParam(name = "mc", defaultValue = "") String mc) {
 	Optional<GreenPoint> ogp = greenPointDao.findById(idGreenPoint);
 	GreenPoint gp = ogp.get();
 	model.addAttribute("greenPoint", gp);
 	return "green-point";
+	}
+	@RequestMapping(value = "green-point", method = RequestMethod.DELETE)
+	public String deleteGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
+	Long idGreenPoint,@RequestParam(name = "mc", defaultValue = "") String mc) {
+	greenPointDao.deleteById(idGreenPoint);
+	return "index";
 	}
 	@RequestMapping(value = "/add-greenpoint", method = RequestMethod.POST)
 	public String add(Model model, 
@@ -64,6 +66,31 @@ public class GreenPointController {
 				greenPointDao.save(greenPoint);
 				if(multipartFile!=null) {
 					String uploadDir = "src/main/resources/static/images/photos_avant/" + greenPoint.getIdGreenPoint();
+			        FileUpload.saveFile(uploadDir, fileName, multipartFile);
+				}
+				return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
+				
+			}
+	@RequestMapping(value = "/edit-greenpoint", method = RequestMethod.PUT)
+	public String edit(Model model, 
+			@RequestParam(name = "latitude", defaultValue = "0.0") Float latitude,
+			@RequestParam(name = "longitude", defaultValue = "0") Float longitude,
+			@RequestParam(name = "idTeam", defaultValue = "0") Long idTeam,
+			@RequestParam(name = "description", defaultValue = "") String description,
+			@RequestParam("photo_apres") MultipartFile multipartFile) throws IOException 
+			{
+				String fileName = null;
+				if(multipartFile!=null) {
+					fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+				}
+				Optional<GreenPoint> ogp = greenPointDao.findById(idTeam);
+				GreenPoint greenPoint = ogp.get();
+				greenPoint.setDescription(description);
+				greenPoint.setLatitude(latitude);
+				greenPoint.setLongitude(longitude);
+				greenPoint.setPhoto_apres(fileName);
+				if(multipartFile!=null) {
+					String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();
 			        FileUpload.saveFile(uploadDir, fileName, multipartFile);
 				}
 				return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
