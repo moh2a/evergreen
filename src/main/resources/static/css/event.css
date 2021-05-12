@@ -1,0 +1,48 @@
+@charset "ISO-8859-1";
+
+.boite-simple{
+	padding: 32px 0 32px 0;
+}
+
+.event{
+	padding:32px;
+	display: flex;
+	align-items: space-around;
+	justify-content: space-between;
+	
+}
+.textevent{
+	padding: 8px;
+}
+
+.localisation{
+	display: flex;
+	align-items:center;
+}
+
+.subutton{
+	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #43F7B8;
+	border-radius: 32px;
+	border: none;
+	font-size: 16px;
+	padding: 16px;
+}
+
+.textbutton{
+	color: white;
+}
+
+.titre-partie{
+	display:inline-block;
+	width: 100%;
+	height: 48px;
+	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #43F7B8;
+	
+}
+
+h2{
+	color: white;
+	text-align:left;
+	margin-left:16px;
+	
+}

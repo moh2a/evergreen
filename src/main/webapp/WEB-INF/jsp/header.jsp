@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/event.css"/>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body class="body">
