@@ -1,5 +1,6 @@
 package com.evergreen.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -14,6 +15,7 @@ import lombok.Data;
 @Data
 @Service
 public class UserService {
+	
 	@Autowired
     private UserRepository userRepository;
 
@@ -34,6 +36,17 @@ public class UserService {
     	user.setRole("Utilisateur");
         User savedUser = userRepository.save(user);
         return savedUser;
+    }
+    
+    public boolean isUserExisting(String email) {
+        Iterable<User> users = getUsers();
+    	for (User user : users) {
+    		if (email.equals(user.getEmail())) {
+    			return true;
+    		}
+    	}
+    	
+    	return false;
     }
     
     private static String hashPassword(String password){

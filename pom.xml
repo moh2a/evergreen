@@ -36,18 +36,26 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
 		<dependency>
-		   <groupId>org.projectlombok</groupId>
-		   <artifactId>lombok</artifactId>
-		   <version>1.18.8</version><!--$NO-MVN-MAN-VER$-->
-		   <scope>provided</scope>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.8</version><!--$NO-MVN-MAN-VER$-->
+			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
 	    	<version>0.3m</version>
         </dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
+		</dependency>
+
 
 		
 		<dependency>

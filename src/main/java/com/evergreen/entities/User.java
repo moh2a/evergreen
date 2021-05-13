@@ -34,5 +34,14 @@ public class User {
     
     private String role;
 
-	
+    public User() { };
+    
+    public User(String firstName, String lastName, String email, String password, Date birthdate) {
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.email = email;
+    	this.password = password;
+    	this.birthdate = birthdate;
+    }
+
 }
