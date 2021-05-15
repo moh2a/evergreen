@@ -10,7 +10,7 @@ target/
 
 # Intellij .idea/ *.iml *.iws  
 
-
+src/main/resources/application.properties
 # Mac 
 .DS_Store 
 # Maven
