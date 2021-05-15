@@ -16,12 +16,12 @@
         <div id="guest-homepage-row-1">
             <div>
                 <h2>Déjà un compte ? Bon retour parmi nous !</h2>
-                <form id="login-form" action="#">
+                <form id="login-form" action="login" method="POST">
                         <span class="login-form-input-container">
-                            <input type="text" name="mail" id="login-form-mail" placeholder="Adresse mail" required>
+                            <input type="text" name="email" id="login-form-mail" placeholder="Adresse mail" required>
                         </span>
                     <span class="login-form-input-container">
-                            <input type="password" name="mot_de_passe" id="login-form-mdp" placeholder="Mot de passe" required><br>
+                            <input type="password" name="password" id="login-form-mdp" placeholder="Mot de passe" required><br>
                             <p id="login-form-password-forgotten">Mot de passe oublié ?</p>
                         </span>
                     <span class="login-form-input-container">

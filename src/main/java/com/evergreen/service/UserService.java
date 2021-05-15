@@ -23,6 +23,10 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
     public Iterable<User> getUsers() {
         return userRepository.findAll();
     }
@@ -53,11 +57,7 @@ public class UserService {
 		return BCrypt.hashpw(password, BCrypt.gensalt());
 	}
     
-    private static boolean checkPassword(String password, String hashedPassword) {
-		if (BCrypt.checkpw(password, hashedPassword)) {
-			return true;
-		}
-		
-		return false;
+    public static boolean checkPassword(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
     }
 }

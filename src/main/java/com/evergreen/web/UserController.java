@@ -17,6 +17,7 @@ import util.FileUpload;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -39,7 +40,7 @@ public class UserController {
 		return "contact";
 	}
 	
-	@PostMapping("/addUser")
+	@PostMapping("/add-user")
 	public String saveUser(@RequestParam(name = "lastname") String lastName,
 								 @RequestParam(name = "firstname") String firstName,
 								 @RequestParam(name = "email") String email,
@@ -56,6 +57,23 @@ public class UserController {
 
 			return "redirect:/login?confirmation=true";
 	}
-	
-	
+
+	@PostMapping("/login")
+	public String login(@RequestParam(name = "email") String email,
+						@RequestParam(name = "password") String password) {
+
+		Optional<User> user = userService.getUserByEmail(email);
+
+		if (user.isPresent()) {
+			if (UserService.checkPassword(password, user.get().getPassword())) {
+				return "redirect:/index";
+			}
+
+			else {
+				return "redirect:/login?error=2";
+			}
+		}
+
+		return "redirect:/login?error=1";
+	}
 }

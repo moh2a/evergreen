@@ -24,7 +24,7 @@
             <div>
                 <img src="assets/logo/evegreen-logo-site.svg" alt="logo-evergreen" width="50px" />
                 <h2>Créer votre compte</h2>
-                <form id="sign-up-form" action="addUser" method="POST">
+                <form id="sign-up-form" action="add-user" method="POST">
                     <input type="text" name="lastname" id="sign-up-form-nom" placeholder="Nom" required>
                     <input type="text" name="firstname" id="sign-up-form-prénom" placeholder="Prénom" required>
                     <input type="text" name="email" id="sign-up-form-mail" placeholder="Adresse mail" required>
