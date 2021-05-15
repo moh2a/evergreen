@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,8 +23,23 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@GetMapping("/sign-up")
+	public String signUp() {
+		return "sign-up";
+	}
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+
+	@GetMapping("/contact-us")
+	public String contactUs() {
+		return "contact";
+	}
 	
-	@PostMapping("/saveUser")
+	@PostMapping("/addUser")
 	public String saveUser(@RequestParam(name = "lastname") String lastName,
 								 @RequestParam(name = "firstname") String firstName,
 								 @RequestParam(name = "email") String email,
@@ -38,7 +54,7 @@ public class UserController {
 			User user = new User(lastName, firstName, email, password, birthdate);
 			userService.saveUser(user);
 
-			return "redirect:/sign-up-confirmation";
+			return "redirect:/login?confirmation=true";
 	}
 	
 	

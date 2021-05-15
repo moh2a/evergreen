@@ -1,7 +1,5 @@
 package com.evergreen;
 
-
-
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +27,6 @@ public class EvergreenSpringApplication {
 
 		UserService userService = ctx.getBean(UserService.class);
 
-
 		String dateStr="1999-11-05";
 		Date date = Date.valueOf(dateStr);
 		User user = new User("Baptiste", "Alexandre", "mail@mail.com", "mypassword", date);
@@ -37,7 +34,4 @@ public class EvergreenSpringApplication {
 
 		System.out.println(userService.isUserExisting("mail@mail.com"));
 	}
-	
-	
-
 }

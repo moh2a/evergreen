@@ -1,0 +1,362 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Bold.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Italic.ttf);
+    font-style: italic;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    background-image: url(../assets/background/container.png), url(../assets/background/login-page-background.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right center, center center;
+}
+#homepage-body {
+    background-image: url(../assets/background/container.png), url(../assets/background/login-page-background.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right center, center center;
+}
+#sign-up-body {
+    background-image: url(../assets/background/container.png), url(../assets/background/sign-up-background.jpg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right center, center bottom;
+    background-size: auto, 100%;
+}
+#contact-body {
+    background-image: url(../assets/background/container.png), url(../assets/background/contact-background.jpg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right center, center bottom;
+    background-size: auto, 100%;
+}
+h1 {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 64px;
+    color: #191919;
+    margin: 0;
+}
+h2 {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 32px;
+    color: #191919;
+    margin: 0;
+}
+h3 {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 24px;
+    color: #191919;
+}
+p, label {
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: #191919;
+}
+a {
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: #191919;
+    text-decoration: none;
+}
+a:hover {
+    color: #191919;
+}
+.back {
+    color: #36FC59;
+}
+.back .p-italic {
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-style: italic;
+    color: #191919;
+}
+.green-button {
+    background: linear-gradient(180deg, #42F7B1 0%, #36FC59 100%);
+    border-radius: 50px;
+    height: 48px;
+    box-shadow: none;
+    border: none;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 0 24px 0 24px;
+}
+input[type=text], input[type=password], input[type=date]{
+    height: 48px;
+    background-color: #F1F1F1;
+    border: none;
+    border-radius: 5px;
+    padding: 0 24px 0 24px;
+}
+input[type=checkbox] {
+    background-color: #F1F1F1;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+input[type=submit] {
+    margin-top: 16px;
+}
+::placeholder {
+    color: #191919;
+    font-size: 16px;
+}
+#login-form {
+    display: flex;
+    flex-wrap: wrap;
+}
+#login-form-password-forgotten {
+    margin-top: 8px;
+    margin-left: 8px;
+    color: #36FC59;
+}
+#login-form-mail, #login-form-mdp {
+    margin: 16px 24px 0 0;
+    width: 224px;
+}
+#guest-homepage-row-1 {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+#guest-homepage-row-1 > div {
+    height: 90%;
+    max-width: 60%;
+    padding-right: 15%;
+    display: flex;
+    flex-direction: column;
+}
+#guest-homepage-row-2 {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+#guest-homepage-row-2 > div {
+    height: 80%;
+    max-width: 50%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 8%;
+}
+#guest-homepage-row-3, #sign-up-row-3, #contact-row-3 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items:flex-end;
+}
+#guest-homepage-row-3 > div {
+    height: 75%;
+    max-width: 75%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 3%;
+}
+#sign-up-form, #contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#sign-up-form > input[type=text], #sign-up-form > input[type=password], #contact-form > input[type=text] {
+    margin: 32px 0 0 0;
+    width: 300px;
+}
+#sign-up-row-1, #contact-row-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 1;
+}
+#sign-up-row-1 > div, #contact-row-1 > div {
+    width: 57%;
+}
+#sign-up-row-2, #contact-row-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 8;
+}
+#sign-up-row-2 > div, #contact-row-2 > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+#sign-up-form-birthdate-bloc {
+    width: 100%;
+    margin-top: 16px;
+}
+#sign-up-form-birthdate-bloc > input[type=date] {
+    width: 300px;
+}
+#guest-homepage-row-3, #sign-up-row-3, #contact-row-3 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items:flex-end;
+}
+#guest-homepage-row-3 > div, #sign-up-row-3> div, #contact-row-3 > div {
+    height: 75%;
+    max-width: 75%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 3%;
+}
+#contact-form-message {
+    width: 432px;
+    height: 232px;
+    background: #F1F1F1;
+    border-radius: 5px;
+    border: none;
+    padding: 16px;
+    margin-top: 32px;
+    font-size: 16px;
+}
+#sign-up-form > input[type=submit], #contact-form > input[type=submit] {
+    margin-top: 32px;
+}
+@media all and (max-width: 800px) {
+    #login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+   }
+    .login-form-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: first baseline;
+   }
+    input[type=submit] {
+        margin-top: 0;
+   }
+    #guest-homepage-row-1 {
+        align-items: center;
+        margin: 32px 0;
+   }
+    #guest-homepage-row-1 > div {
+        height: 100%;
+        text-align: center;
+        padding: 0;
+        width: 100%;
+        max-width: 75%;
+        margin-top: 16px;
+   }
+    #guest-homepage-row-2 {
+        align-items: center;
+        margin: 32px 0;
+        height: 500px;
+   }
+    #guest-homepage-row-2 > div {
+        height: 100%;
+        text-align: center;
+        padding: 0;
+        width: 100%;
+        max-width: 75%;
+        align-items: center;
+        justify-content: space-evenly;
+   }
+    #guest-homepage-row-2 > img {
+        display: block;
+        margin: auto;
+   }
+    #guest-homepage-row-3, #sign-up-row-3, #contact-row-3 {
+        align-items: center;
+        justify-content: center;
+        margin: 32px 0;
+   }
+    #guest-homepage-row-3 > div, #sign-up-row-3 > div, #contact-row-3 > div {
+        height: 100%;
+        text-align: center;
+        padding: 0;
+        width: 100%;
+        max-width: 75%;
+        align-items: center;
+        flex-wrap: wrap;
+   }
+    #sign-up-row-1 > div, #contact-row-1 > div {
+        width: 95%;
+   }
+    #sign-up-row-2, #contact-row-2 {
+        align-items: center;
+   }
+    #sign-up-row-2 > div, #contact-row-2 > div {
+        height: 100%;
+        padding: 0;
+        width: 100%;
+        max-width: 75%;
+        align-items: center;
+        justify-content: space-evenly;
+   }
+}
+@media all and (min-width: 800px) and (max-width: 1024px) {
+    .login-form-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: first-baseline;
+   }
+    #login-form-password-forgotten {
+        margin: 0;
+   }
+    input[type=submit] {
+        margin-top: 16px;
+   }
+    #guest-homepage-row-1 {
+        align-items: center;
+   }
+    #guest-homepage-row-1 > div {
+        height: 100%;
+        text-align: center;
+        padding: 0;
+        width: 100%;
+        max-width: 75%;
+        margin-top: 16px;
+   }
+    #guest-homepage-row-2 {
+        align-items: center;
+   }
+    #guest-homepage-row-2 > div {
+        height: 100%;
+        padding: 0;
+        width: 100%;
+        max-width: 75%;
+        margin-top: 16px;
+        justify-content: space-evenly;
+   }
+    #guest-homepage-row-2 > img {
+        display: block;
+        margin: auto;
+   }
+}
