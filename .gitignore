@@ -10,7 +10,7 @@ target/
 
 # Intellij .idea/ *.iml *.iws  
 
-src/main/resources/application.properties
+application.properties
 # Mac 
 .DS_Store 
 # Maven
@@ -21,7 +21,9 @@ target/
 .classpath
 .factorypath
 .project
+B
 .settings
+B
 .springBeans
 .sts4-cache
 
