@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <div class="container-fluid">
@@ -126,7 +126,7 @@
 		        	});
 		          var positionIcone = new icon({
 		        	    iconUrl: 'assets/position.png'});
-		          var marker = L.marker([pos.lat, pos.lng],{icon: positionIcone}).addTo(map).bindPopup("<b>Vous êtes ici !</b>");
+		          var marker = L.marker([pos.lat, pos.lng],{icon: positionIcone}).addTo(map).bindPopup("<b>Vous Ãªtes ici !</b>");
 		          markerGP.setLatLng([pos.lat, pos.lng]).update();
 		          
 		        },
@@ -155,7 +155,7 @@
         
         <c:forEach var="greenPoint" items="${requestScope.greenPoints}">
         	var latLng = new L.LatLng(parseFloat("${greenPoint.latitude}"), parseFloat("${greenPoint.longitude}"));
-        	var marker = new L.Marker(latLng, {icon: greenIcon},{id:"${greenPoint.idGreenPoint}"}, {title: "GreenPoint n°"+"${greenPoint.idGreenPoint}"}).bindPopup("<h1>GreenPoint n°"+"${greenPoint.idGreenPoint}"+"</h1><a href=\"green-point?ref=${greenPoint.idGreenPoint}\">"+"En savoir plus"+"</a>");
+        	var marker = new L.Marker(latLng, {icon: greenIcon},{id:"${greenPoint.idGreenPoint}"}, {title: "GreenPoint nÂ°"+"${greenPoint.idGreenPoint}"}).bindPopup("<h1>GreenPoint nÂ°"+"${greenPoint.idGreenPoint}"+"</h1><a href=\"green-point?ref=${greenPoint.idGreenPoint}\">"+"En savoir plus"+"</a>");
             markersCluster.addLayer(marker);
         	//locations.push({location:{lat:parseFloat("${greenPoint.latitude}"),lng:parseFloat("${greenPoint.longitude}")},id:"${greenPoint.idGreenPoint}", description:"${greenPoint.description}"});
   		</c:forEach>

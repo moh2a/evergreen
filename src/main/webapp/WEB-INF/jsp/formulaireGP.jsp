@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <div class="boite-simple">
     <h1></h1>
-    Cr�ation d'un Green Point</h1>
+    Création d'un Green Point</h1>
     <div class="card">
         <div class="card-header">Formulaire</div>
         <div class="card-body">

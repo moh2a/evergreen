@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <div class="boite-simple">
     <h1>Accueil</h1>
-    <h2>Trouver des GreenPoints à proximité</h2>
+    <h2>Trouver des GreenPoints Ã  proximitÃ©</h2>
     <div class="mapConteneur">
         <jsp:include page="listGreenPoint.jsp">
             <jsp:param name="greenPoints" value="{$greenPoints}" />
@@ -9,6 +11,6 @@
     </div>
     <h2>Derniers articles du blog</h2>
     <div>
-        <a class="btn btn-primary" href="add-greenpoint">Créer un Greenpoint</a>
+        <a class="btn btn-primary" href="add-greenpoint">CrÃ©er un Greenpoint</a>
     </div>
 </div>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp" />
 <div class="container-fluid">
@@ -15,7 +15,7 @@
 			<div class="sticky-top container-fluid">
 				<div class="row">
 					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Evènements à venir</span>
+						<span>EvÃ¨nements Ã  venir</span>
 					</div>
 					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
 						<span>Meilleurs utilisateurs</span>
