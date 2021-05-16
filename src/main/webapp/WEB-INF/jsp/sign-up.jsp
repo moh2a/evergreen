@@ -14,6 +14,12 @@
     </head>
 
     <body id="sign-up-body">
+        <c:if test="${errorMessage != null}">
+            <script async>
+                window.alert("${errorMessage}");
+            </script>
+        </c:if>
+
         <div id="sign-up-row-1">
             <div>
                 <a href="login"><p class="back"><img src="assets/icon/arrow-left.svg" alt="back-icon" width="16px" /> Retour</p></a>
