@@ -13,6 +13,18 @@
         <title>Evergreen - Accueil</title>
     </head>
     <body id = "homepage-body">
+        <c:if test="${confirmation}">
+            <script async>
+                window.alert("${confirmationMessage}");
+            </script>
+        </c:if>
+
+        <c:if test="${error}">
+            <script async>
+                window.alert("${errorMessage}");
+            </script>
+        </c:if>
+
         <div id="guest-homepage-row-1">
             <div>
                 <h2>Déjà un compte ? Bon retour parmi nous !</h2>

@@ -4,6 +4,7 @@ import com.evergreen.entities.GreenPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,18 +27,38 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/sign-up")
-	public String signUp() {
+	public String signUp(@RequestParam(required = false) Optional<Integer> error, Model model) {
+		if (error.isPresent()) {
+			String errorMessage = "Un utilisateur existe déjà pour l'adresse mail spécifiée.";
+			model.addAttribute("errorMessage", errorMessage);
+		}
+
 		return "sign-up";
 	}
 
 	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
+	public String login(@RequestParam(required = false) boolean confirmation, @RequestParam(required = false) Optional<Integer> error, Model model) {
+		if (confirmation) {
+			String confirmationMessage = "Votre inscription a bien été prise en compte ! Vous pouvez à présenter vous connecter.";
+			model.addAttribute("confirmationMessage", confirmationMessage);
+			model.addAttribute("confirmation", confirmation);
+		}
 
-	@GetMapping("/contact-us")
-	public String contactUs() {
-		return "contact";
+		if (error.isPresent()) {
+			String errorMessage = "";
+			if (error.get() == 1) {
+				errorMessage = "Aucun utilisateur n'a été trouvé pour l'adresse mail spécifiée.";
+			}
+
+			else if (error.get() == 2) {
+				errorMessage = "Le mot de passe saisi est incorect.";
+			}
+
+			model.addAttribute("error", true);
+			model.addAttribute("errorMessage", errorMessage);
+		}
+
+		return "login";
 	}
 	
 	@PostMapping("/add-user")
@@ -45,17 +66,17 @@ public class UserController {
 								 @RequestParam(name = "firstname") String firstName,
 								 @RequestParam(name = "email") String email,
 								 @RequestParam(name = "password") String password,
-								 @RequestParam(name = "birthdate") String birthdateStr) {
+								 @RequestParam(name = "birthdate") String birthdateStr, Model model) {
 
 			Date birthdate = Date.valueOf(birthdateStr);
 			if (userService.isUserExisting(email)) {
-				return "redirect:/sign-up?error=1";
+				return "sign-up?error=1";
 			}
 
 			User user = new User(lastName, firstName, email, password, birthdate);
 			userService.saveUser(user);
 
-			return "redirect:/login?confirmation=true";
+			return "login?confirmation=true";
 	}
 
 	@PostMapping("/login")
@@ -66,14 +87,14 @@ public class UserController {
 
 		if (user.isPresent()) {
 			if (UserService.checkPassword(password, user.get().getPassword())) {
-				return "redirect:/index";
+				return "index";
 			}
 
 			else {
-				return "redirect:/login?error=2";
+				return "login?error=2";
 			}
 		}
 
-		return "redirect:/login?error=1";
+		return "login?error=1";
 	}
 }

@@ -43,13 +43,12 @@ public class UserService {
     }
     
     public boolean isUserExisting(String email) {
-        Iterable<User> users = getUsers();
-    	for (User user : users) {
-    		if (email.equals(user.getEmail())) {
-    			return true;
-    		}
-    	}
-    	
+        Optional<User> user = userRepository.findUserByEmail(email);
+
+        if (user.isPresent()) {
+            return true;
+        }
+
     	return false;
     }
     
