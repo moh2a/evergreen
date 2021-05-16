@@ -10,7 +10,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text bouton-evergreen"><i class="fa fa-map-marker"></i></span>
                     </div>
-                    <input type="text" id="adresse" class="form-control" placeholder="Enter Name Here">
+                    <input type="text" id="adresse" class="form-control" placeholder="Adresse du green point">
                     <div class="input-group-append">
                         <button onclick="getCoordonnees()" class="input-group-text bouton-evergreen">Rechercher</button>
                     </div>

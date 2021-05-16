@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<div class="row justify-content-md-center">
 		<div class="col-xl-2 col-lg-2 col-xs-12 px-1 ">
-			<%@include  file="../html/navigation.html" %>
+			<%@include  file="navigation.jsp" %>
 		</div>
 		<div class="col-xl-7 col-lg-8 col-xs-12 px-1">
 			<%@include  file="accueil.jsp" %>
@@ -29,4 +29,4 @@
 		</div>
 	</div>
 </div>
-<%@include  file="../html/footer.html" %>
+<%@include  file="footer.jsp" %>

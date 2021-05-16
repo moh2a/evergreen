@@ -123,6 +123,7 @@ p {
 	width: 104px;
 	height: 48px;
     border:none;
+    border-radius: 50px;
 	
 }
 .icone-localisation{
@@ -130,7 +131,6 @@ p {
 }
 .bouton-evergreen{
 	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #C4C4C4;
-	border-radius: 50px;
 }
 .line-clamp {
     display: -webkit-box;

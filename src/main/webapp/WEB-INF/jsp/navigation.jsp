@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <div class="boite-simple sticky-top menu">
     <div class="row justify-content-between">
         <div class="logo col-4 col-sm-2 col-md-12 ">
@@ -19,7 +21,7 @@
         <ul class="fa-ul nav flex-column">
             <li class="nav-item"><span class="fa-li"><i class="fa fa-home nav-link"></i></span><a class="nav-link" href="index">Accueil</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-user-o nav-link"></i></span><a class="nav-link" href="#">Profil</a></li>
-            <li class="nav-item"><span class="fa-li "><i class="fa fa-calendar-o nav-link"></i></span><a class="nav-link" href="event">Evenements</a></li>
+            <li class="nav-item"><span class="fa-li "><i class="fa fa-calendar-o nav-link"></i></span><a class="nav-link" href="event">Evènements</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-comments-o nav-link"></i></span><a class="nav-link" href="event">Forum</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-pencil-square-o nav-link"></i></span><a class="nav-link" href="event">Blog</a></li>
 
