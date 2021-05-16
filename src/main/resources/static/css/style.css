@@ -23,21 +23,22 @@
 
 html,
 body {
-    font-size: 12px !important;
     height: 100%;
-    padding-top: 10px;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
 }
 
-h1,
-h2 {
+
+.titres{
+    color:#191919;
     text-align: center;
+    font-weight: bold;
 }
-
 p {
     font-size: 12px !important;
 }
-
+.box{
+    margin: 10px;
+}
 .boite-simple {
     margin-bottom: 15px;
     border-radius: 3px;
@@ -53,7 +54,14 @@ p {
 .navigation {
     height: fit-content;
 }
-
+.vertical-center {
+    margin: 0;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 .logo {
     text-align: center;
 }
@@ -111,8 +119,10 @@ p {
     transition: 0.4s;
 }
 .participer{
-	width: 112px;
+    color:#FFF;
+	width: 104px;
 	height: 48px;
+    border:none;
 	
 }
 .icone-localisation{
@@ -121,4 +131,14 @@ p {
 .bouton-evergreen{
 	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #C4C4C4;
 	border-radius: 50px;
+}
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.truncate {
+    text-overflow: ellipsis;
+
 }
