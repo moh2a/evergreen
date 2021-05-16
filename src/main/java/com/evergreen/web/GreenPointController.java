@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 
+import com.evergreen.service.GreenPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.evergreen.dao.GreenPointRepository;
 import com.evergreen.entities.GreenPoint;
 
@@ -22,29 +23,33 @@ import util.FileUpload;
 @Controller
 public class GreenPointController {
 	@Autowired
+	private GreenPointService greenPointService;
+
+	@Autowired
 	private GreenPointRepository greenPointDao;
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-    public String index(Model model) {
-		List<GreenPoint> greenPoints = greenPointDao.findAll();
+	@GetMapping({ "/", "/index" })
+	public String index(Model model) {
+		List<GreenPoint> greenPoints = greenPointService.getGreenPoints();
 		model.addAttribute("greenPoints", greenPoints);
-        return "index";
-    }
-	@RequestMapping(value = "/add-greenpoint", method = RequestMethod.GET)
-	public String newGreenPoint() {
-	    return "newGreenPoint";
+		return "index";
 	}
+
+	@GetMapping("/add-greenpoint")
+	public String newGreenPoint() {
+		return "newGreenPoint";
+	}
+
+
 	@RequestMapping(value = "green-point", method = RequestMethod.GET)
 	public String viewGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
 	Long idGreenPoint,@RequestParam(name = "mc", defaultValue = "") String mc) {
-	Optional<GreenPoint> ogp = greenPointDao.findById(idGreenPoint);
-	GreenPoint gp = ogp.get();
-	model.addAttribute("greenPoint", gp);
+	model.addAttribute("greenPoint", greenPointService.getGreenPoint(idGreenPoint).get());
 	return "green-point";
 	}
 	@RequestMapping(value = "green-point", method = RequestMethod.DELETE)
 	public String deleteGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
 	Long idGreenPoint,@RequestParam(name = "mc", defaultValue = "") String mc) {
-	greenPointDao.deleteById(idGreenPoint);
+		greenPointService.deleteGreenPoint((idGreenPoint));
 	return "index";
 	}
 	@RequestMapping(value = "/add-greenpoint", method = RequestMethod.POST)
@@ -58,12 +63,8 @@ public class GreenPointController {
 				if(multipartFile!=null) {
 					fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 				}
-				model.addAttribute("photo_avant",fileName);
-				model.addAttribute("latitude",latitude);
-				model.addAttribute("longitude",longitude);
-				model.addAttribute("description",description);
 				GreenPoint greenPoint = new GreenPoint(description,"actif",latitude, longitude, fileName, null);
-				greenPointDao.save(greenPoint);
+				greenPointService.saveGreenPoint(greenPoint);
 				if(multipartFile!=null) {
 					String uploadDir = "src/main/resources/static/images/photos_avant/" + greenPoint.getIdGreenPoint();
 			        FileUpload.saveFile(uploadDir, fileName, multipartFile);
