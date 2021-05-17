@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+
 <div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-xl-7 col-lg-8 col-xs-12 px-1 footer-box">
