@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <div class="boite-simple sticky-top menu">
     <div class="row justify-content-between">
         <div class="logo col-4 col-sm-2 col-md-12 ">
