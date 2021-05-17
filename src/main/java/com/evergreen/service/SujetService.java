@@ -1,8 +1,6 @@
 package com.evergreen.service;
 
 import com.evergreen.dao.SujetRepository;
-import com.evergreen.dao.UserRepository;
-import com.evergreen.entities.Article;
 import com.evergreen.entities.Sujet;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
