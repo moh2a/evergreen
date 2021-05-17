@@ -63,7 +63,7 @@ public class GreenPointController {
 				if(multipartFile!=null) {
 					fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 				}
-				GreenPoint greenPoint = new GreenPoint(description,"actif",latitude, longitude, fileName, null);
+				GreenPoint greenPoint = new GreenPoint(description,"actif",latitude, longitude, fileName, null, null);
 				greenPointService.saveGreenPoint(greenPoint);
 				if(multipartFile!=null) {
 					String uploadDir = "src/main/resources/static/images/photos_avant/" + greenPoint.getIdGreenPoint();
@@ -78,6 +78,8 @@ public class GreenPointController {
 			@RequestParam(name = "longitude", defaultValue = "0") Float longitude,
 			@RequestParam(name = "idTeam", defaultValue = "0") Long idTeam,
 			@RequestParam(name = "description", defaultValue = "") String description,
+			@RequestParam(name = "statut", defaultValue = "En cours") String statut,
+			@RequestParam(name = "idUser") Long idUser,
 			@RequestParam("photo_apres") MultipartFile multipartFile) throws IOException 
 			{
 				String fileName = null;
@@ -89,6 +91,8 @@ public class GreenPointController {
 				greenPoint.setDescription(description);
 				greenPoint.setLatitude(latitude);
 				greenPoint.setLongitude(longitude);
+				greenPoint.setIdUser(idUser);
+				greenPoint.setStatut(statut);
 				greenPoint.setPhoto_apres(fileName);
 				if(multipartFile!=null) {
 					String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();

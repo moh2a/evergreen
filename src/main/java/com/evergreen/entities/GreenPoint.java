@@ -12,7 +12,8 @@ public class GreenPoint implements Serializable {
   @Id
   @GeneratedValue
   private Long idGreenPoint;
-
+  private Long idUser;
+  private Integer score;
   @Column(length = 500)
   private String description;
   @Column(nullable = true,length = 100)
@@ -24,13 +25,14 @@ public class GreenPoint implements Serializable {
   private Float latitude;
   private Float longitude;
 
-  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres) {
+  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, Long idUser) {
     this.description = description;
     this.latitude = latitude;
     this.statut = statut;
     this.longitude = longitude;
     this.photo_avant = photo_avant;
     this.photo_apres = photo_apres;
+    this.idUser = idUser;
   }
 
   public String getPhoto_avant() {
@@ -81,5 +83,21 @@ public GreenPoint() {}
 
   public void setLongitude(Float longitude) {
     this.longitude = longitude;
+  }
+
+  public Long getIdUser() {
+    return idUser;
+  }
+
+  public void setIdUser(Long idUser) {
+    this.idUser = idUser;
+  }
+
+  public String getStatut() {
+    return statut;
+  }
+
+  public void setStatut(String statut) {
+    this.statut = statut;
   }
 }
