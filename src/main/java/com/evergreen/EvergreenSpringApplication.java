@@ -30,7 +30,9 @@ public class EvergreenSpringApplication {
 		Sujet sujet = new Sujet(null,"Premier sujet", "ceci est le premier sujet");
 		sujet = sujetService.save(sujet);
 		Message message = new Message(null, sujet,"le premier message du premier sujet!");
+		Message message2 = new Message(null, sujet,"le deuxieme message du premier sujet!");
 		messageService.save(message);
+		messageService.save(message2);
 		Article article = new Article("Le trashtag challenge","Un challenge en adéquation avec EverGreen", "testestestetstetstetstets","image.png");
 		articleService.save(article);
 
