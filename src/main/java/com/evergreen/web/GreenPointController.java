@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import com.evergreen.entities.Message;
 import com.evergreen.service.GreenPointService;
+import com.evergreen.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +25,16 @@ import util.FileUpload;
 public class GreenPointController {
 	@Autowired
 	private GreenPointService greenPointService;
+	@Autowired
+	private MessageService messageService;
 
 	@Autowired
 	private GreenPointRepository greenPointDao;
 	@GetMapping({ "/", "/index" })
 	public String index(Model model) {
 		List<GreenPoint> greenPoints = greenPointService.getGreenPoints();
+		List<Message> messages = messageService.getMessagesPaginate(0,3).getContent();
+		model.addAttribute("messages", messages);
 		model.addAttribute("greenPoints", greenPoints);
 		return "index";
 	}

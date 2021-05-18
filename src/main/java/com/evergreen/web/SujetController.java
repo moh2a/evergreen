@@ -1,5 +1,6 @@
 package com.evergreen.web;
 
+import com.evergreen.entities.Message;
 import com.evergreen.entities.Sujet;
 import com.evergreen.service.MessageService;
 import com.evergreen.service.SujetService;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class SujetController {
     @Autowired
@@ -19,14 +22,18 @@ public class SujetController {
     private MessageService messageService;
     @RequestMapping(value = "forum", method = RequestMethod.GET)
     public String forum(Model model) {
+        List<Message> messages = messageService.getMessagesPaginate(0,3).getContent();
+        model.addAttribute("messages", messages);
         model.addAttribute("sujets", sujetService.getSujets());
         return "forum";
     }
     @RequestMapping(value = "sujet", method = RequestMethod.GET)
     public String viewSujet(Model model, @RequestParam(name = "ref", defaultValue = "")
             Long idSujet, @RequestParam(name = "mc", defaultValue = "") String mc) {
+        List<Message> messages = messageService.getMessagesPaginate(0,3).getContent();
+        model.addAttribute("messages", messages);
         model.addAttribute("sujet", sujetService.getSujet(idSujet).get());
-        model.addAttribute("messages", messageService.getMessagesByIdSujet(idSujet));
+        model.addAttribute("reponses", messageService.getMessagesByIdSujet(idSujet));
         return "sujet";
     }
     @PostMapping("sujet")

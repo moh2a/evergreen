@@ -15,11 +15,11 @@
                         <p class="card-text">${sujet.sujet}</p>
                         <p class="card-text"><small class="text-muted">${sujet.getCreatedAt()}</small></p>
                         <h4>Réponses : </h4>
-                        <c:forEach var="message" items="${messages}">
+                        <c:forEach var="reponse" items="${reponses}">
                             <div class="card border-success">
                                 <div class="card-body">
-                                    <p class="card-text">${message.message}</p>
-                                    <p class="card-text"><small class="text-muted">${message.getCreatedAt()}</small></p>
+                                    <p class="card-text">${reponse.message}</p>
+                                    <p class="card-text"><small class="text-muted">${reponse.getCreatedAt()}</small></p>
                                 </div>
                             </div>
                         </c:forEach>
@@ -47,7 +47,7 @@
                         <span>Meilleurs utilisateurs</span>
                     </div>
                     <div class=" col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-                        <span>Derniers messages du forum</span>
+                        <%@include  file="derniersMessages.jsp" %>
                     </div>
                 </div>
 
