@@ -50,4 +50,11 @@ public class Message extends Audit{
         this.message = message;
     }
 
+    public Sujet getSujet() {
+        return sujet;
+    }
+
+    public void setSujet(Sujet sujet) {
+        this.sujet = sujet;
+    }
 }

@@ -34,7 +34,7 @@
                         <span>Meilleurs utilisateurs</span>
                     </div>
                     <div class=" col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-                        <span>Derniers messages du forum</span>
+                        <%@include  file="derniersMessages.jsp" %>
                     </div>
                 </div>
 

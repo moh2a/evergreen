@@ -7,10 +7,7 @@ import com.evergreen.service.SujetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,28 +17,40 @@ public class SujetController {
     private SujetService sujetService;
     @Autowired
     private MessageService messageService;
+
     @RequestMapping(value = "forum", method = RequestMethod.GET)
     public String forum(Model model) {
-        List<Message> messages = messageService.getMessagesPaginate(0,3).getContent();
+        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
         model.addAttribute("messages", messages);
         model.addAttribute("sujets", sujetService.getSujets());
         return "forum";
     }
+
     @RequestMapping(value = "sujet", method = RequestMethod.GET)
     public String viewSujet(Model model, @RequestParam(name = "ref", defaultValue = "")
             Long idSujet, @RequestParam(name = "mc", defaultValue = "") String mc) {
-        List<Message> messages = messageService.getMessagesPaginate(0,3).getContent();
+        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
         model.addAttribute("messages", messages);
         model.addAttribute("sujet", sujetService.getSujet(idSujet).get());
         model.addAttribute("reponses", messageService.getMessagesByIdSujet(idSujet));
         return "sujet";
     }
+
     @PostMapping("sujet")
-        public String saveSujet(@RequestParam(name = "titre") String titre,
-                              @RequestParam(name = "idUser",defaultValue = "0") Long idUser,
-                              @RequestParam(name = "sujet") String sujet, Model model)  {
+    public String saveSujet(@RequestParam(name = "titre") String titre,
+                            @RequestParam(name = "idUser", defaultValue = "0") Long idUser,
+                            @RequestParam(name = "sujet") String sujet, Model model) {
         sujetService.save(new Sujet(idUser, titre, sujet));
         model.addAttribute("sujets", sujetService.getSujets());
         return "forum";
+    }
+    @GetMapping("sujet/delete")
+    public String deleteSujet(@RequestParam(name = "ref", defaultValue = "") Long idSujet,
+                                Model model) {
+        sujetService.delete(idSujet);
+        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
+        model.addAttribute("messages", messages);
+        model.addAttribute("sujets", sujetService.getSujets());
+        return "redirect:/forum" ;
     }
 }

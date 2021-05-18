@@ -31,7 +31,7 @@
             <c:set var="mode" scope="session" value="${param.mode}"/>
             <c:if test="${param.mode eq 'liste'}">
                 <div class="col-md-6">
-                    <div id="mapL" #mapL></div>
+                    <div id="mapL"></div>
                 </div>
                 <div class="col-md-6 listGP">
                     <div class="row">
@@ -75,8 +75,6 @@
 
 
 <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
-
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
