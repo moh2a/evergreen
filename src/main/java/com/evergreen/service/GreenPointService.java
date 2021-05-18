@@ -12,6 +12,7 @@ import java.util.Optional;
 @Data
 @Service
 public class GreenPointService {
+
     @Autowired
     private GreenPointRepository greenPointRepository;
 
@@ -25,7 +26,7 @@ public class GreenPointService {
         GreenPoint savedGreenPoint = greenPointRepository.save(greenPoint);
         return savedGreenPoint;
     }
-    public void deleteGreenPoint(long id){
+    public void deleteGreenPoint(Long id){
         greenPointRepository.deleteById(id);
     }
 }

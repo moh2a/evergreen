@@ -8,8 +8,6 @@ import java.io.Serializable;
 
 @Entity
 public class Article implements Serializable {
-
-
     @Id
     @GeneratedValue
     private Long idArticle;

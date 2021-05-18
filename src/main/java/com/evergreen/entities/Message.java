@@ -1,16 +1,15 @@
 package com.evergreen.entities;
 
+import com.evergreen.entities.Audit;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 public class Message extends Audit{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMessage;
     private Long idUser;
     @Column(length = 255)

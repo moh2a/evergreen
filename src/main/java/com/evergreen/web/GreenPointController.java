@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-
 import com.evergreen.service.GreenPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,15 +41,19 @@ public class GreenPointController {
 
 	@RequestMapping(value = "green-point", method = RequestMethod.GET)
 	public String viewGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
-	Long idGreenPoint,@RequestParam(name = "mc", defaultValue = "") String mc) {
+	Long idGreenPoint) {
 	model.addAttribute("greenPoint", greenPointService.getGreenPoint(idGreenPoint).get());
 	return "green-point";
 	}
-	@RequestMapping(value = "green-point", method = RequestMethod.DELETE)
+	@RequestMapping(value = "green-point/delete", method = RequestMethod.GET)
 	public String deleteGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
-	Long idGreenPoint,@RequestParam(name = "mc", defaultValue = "") String mc) {
+	Long idGreenPoint) {
+		String uploadDir = "images/photos_avant/" + idGreenPoint;
+		FileUpload.deleteFile(uploadDir);
 		greenPointService.deleteGreenPoint((idGreenPoint));
-	return "index";
+		List<GreenPoint> greenPoints = greenPointService.getGreenPoints();
+		model.addAttribute("greenPoints", greenPoints);
+	return "redirect:/index";
 	}
 	@RequestMapping(value = "/add-greenpoint", method = RequestMethod.POST)
 	public String add(Model model, 
