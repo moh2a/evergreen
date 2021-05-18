@@ -66,17 +66,17 @@ public class UserController {
 								 @RequestParam(name = "firstname") String firstName,
 								 @RequestParam(name = "email") String email,
 								 @RequestParam(name = "password") String password,
-								 @RequestParam(name = "birthdate") String birthdateStr, Model model) {
+								 @RequestParam(name = "birthdate") String birthdateStr) {
 
 			Date birthdate = Date.valueOf(birthdateStr);
 			if (userService.isUserExisting(email)) {
-				return "sign-up?error=1";
+				return "redirect:/sign-up?error=1";
 			}
 
 			User user = new User(lastName, firstName, email, password, birthdate);
 			userService.saveUser(user);
 
-			return "login?confirmation=true";
+			return "redirect:/login?confirmation=true";
 	}
 
 	@PostMapping("/login")
@@ -87,14 +87,14 @@ public class UserController {
 
 		if (user.isPresent()) {
 			if (UserService.checkPassword(password, user.get().getPassword())) {
-				return "index";
+				return "redirect:/index";
 			}
 
 			else {
-				return "login?error=2";
+				return "redirect:/login?error=2";
 			}
 		}
 
-		return "login?error=1";
+		return "redirect:/login?error=1";
 	}
 }
