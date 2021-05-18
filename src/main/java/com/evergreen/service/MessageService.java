@@ -33,7 +33,7 @@ public class MessageService {
     public Message save(Message message) {
         return messageRepository.save(message);
     }
-    public List<Message> getMessagesByIdSujet(Long idSujet){ return messageRepository.findBySujetId(idSujet);}
+    public List<Message> getMessagesByIdSujet(Long idSujet){ return messageRepository.findBySujetId(idSujet,Sort.by("updatedAt").ascending());}
     public void delete(Long id) {
         messageRepository.deleteById(id);
     }

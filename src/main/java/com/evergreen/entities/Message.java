@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 public class Message extends Audit{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //means autoincrement.
     private Long idMessage;
     private Long idUser;
     @Column(length = 255)
