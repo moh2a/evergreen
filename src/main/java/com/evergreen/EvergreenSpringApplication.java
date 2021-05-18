@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.evergreen.entities.*;
 import com.evergreen.service.ArticleService;
+import com.evergreen.service.EventService;
 import com.evergreen.service.MessageService;
 import com.evergreen.service.SujetService;
 import org.springframework.boot.SpringApplication;
@@ -42,7 +43,19 @@ public class EvergreenSpringApplication {
 		Date date = Date.valueOf(dateStr);
 		User user = new User("Baptiste", "Alexandre", "mail@mail.com", "mypassword", date);
 		userService.saveUser(user);
+		
+		EventService eventService = ctx.getBean(EventService.class);
+		
+		String dateStr2 = "2022-05-18";
+		Date dateEvent = Date.valueOf(dateStr2);
+		Event event = new Event("Meeting de bénévolat 2022", "Rencontre entre bénévoles", "Paris", dateEvent);
+		eventService.saveEvent(event);
+		
+		String dateStr3 = "2020-05-18";
+		dateEvent = Date.valueOf(dateStr3);
+		Event event2 = new Event("Meeting de bénévolat 2020", "Rencontre entre bénévoles", "Paris", dateEvent);
+		eventService.saveEvent(event2);
+		
 
-		System.out.println(userService.isUserExisting("mail@mail.com"));
 	}
 }
