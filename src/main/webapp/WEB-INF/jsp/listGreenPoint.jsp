@@ -38,8 +38,9 @@
 
                         <c:forEach var="greenPoint" items="${requestScope.greenPoints}">
                             <div style="height: 100px;" class="d-flex">
+
                                     <div class="col-xl-1 align-self-center">
-                                        <span class=" icone-localisation " style="color: #43F7B8;">
+                                        <span onclick="panTo(${greenPoint.latitude},${greenPoint.longitude})" class=" icone-localisation " style="color: #43F7B8;">
                                             <i class="fa fa-map-marker fa-2x"></i>
                                         </span>
                                     </div>
@@ -50,10 +51,13 @@
                                                 <p class="truncate">${greenPoint.description}</p>
                                             </div>
                                         </span>
+                                        <a href="green-point?ref=${greenPoint.idGreenPoint}" class=" stretched-link"></a>
                                     </div>
                                     <div class="col-xl-4 align-self-center">
                                         <button class="bouton-evergreen participer">Participer</button>
                                     </div>
+
+
                             </div>
                         </c:forEach>
 
@@ -81,7 +85,10 @@
     var map = L.map('mapL').setView([48.80952, 7.776818], 13).on('click', onClick);
     var markerGP = new L.Marker([48.80952, 7.776818]).addTo(map);
     var positionCoordonnees;
-
+    function panTo( latitude,  longitude){
+        var latLng = new L.LatLng(latitude, longitude);
+        map.panTo(latLng);
+    }
     function markerAtMyPosition() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
