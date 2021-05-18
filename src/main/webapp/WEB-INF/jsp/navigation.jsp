@@ -4,7 +4,8 @@
     <div class="row justify-content-between">
         <div class="logo col-4 col-sm-2 col-md-12 ">
             <a href="index">
-                <img src="assets/LOGO-SITE.png" alt="logo" width="100" height="100">
+                <img src="assets/logo/evegreen-logo-site.svg" alt="logo-evergreen" width="70px" />
+                <!--<img src="assets/LOGO-SITE.png" alt="logo" width="100" height="100">-->
             </a>
         </div>
         <div class=" d-md-none col-4 col-sm-2 col-md-12 conteneurHam">

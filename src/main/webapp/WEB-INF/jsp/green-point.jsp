@@ -17,9 +17,11 @@
                     <div class="card-body">
                         <h4 class="card-title">Présentation du GreenPoint</h4>
                         <p class="card-text">${greenPoint.description}</p>
-                        <a href="#" class="btn btn-primary">Nettoyer ce GreenPoint</a>
-                        <a href="green-point/delete?ref=${greenPoint.idGreenPoint}" class="btn btn-warning">Supprimer ce GreenPoint</a>
-                    </div>
+                        <nav class="navbar navbar-expand-lg">
+                            <a href="#" class="btn btn-primary nav-item">Nettoyer ce GreenPoint</a>
+                            <a href="green-point/delete?ref=${greenPoint.idGreenPoint}" class="btn btn-warning nav-item">Supprimer ce GreenPoint</a>
+                        </nav>
+                        </div>
                 </div>
             </div>
         </div>
