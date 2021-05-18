@@ -15,7 +15,7 @@
                             <a class="nav-link" href="#">Politique de confidentialité</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nous contacter</a>
+                            <a class="nav-link" href="contact-us">Nous contacter</a>
                         </li>
                     </ul>
             </nav>

@@ -16,6 +16,13 @@
                     </div>
                 </div>
             </div>
+            <c:if test="${param.mode eq 'liste'}">
+                <div class="col-lg-6">
+                    <div>
+                        <a class="btn bouton-evergreen" style="width: 100%" href="add-greenpoint">Créer un Greenpoint</a>
+                    </div>
+                </div>
+            </c:if>
         </div>
     </div>
 

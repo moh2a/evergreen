@@ -11,7 +11,7 @@
             <div class="boite-simple">
                 <div class="card border-success">
                     <div class="card-body">
-                        <h4 class="card-title">${sujet.titre}</h4>
+                        <h4 class="card-title titres">${sujet.titre}</h4>
                         <p class="card-text">${sujet.sujet}</p>
                         <p class="card-text"><small class="text-muted">${sujet.getCreatedAt()}</small></p>
                         <h4>Réponses : </h4>

@@ -40,7 +40,9 @@ public class GreenPointController {
 	}
 
 	@GetMapping("/add-greenpoint")
-	public String newGreenPoint() {
+	public String newGreenPoint(Model model) {
+		List<Message> messages = messageService.getMessagesPaginate(0,3).getContent();
+		model.addAttribute("messages", messages);
 		return "newGreenPoint";
 	}
 

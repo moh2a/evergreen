@@ -10,7 +10,4 @@
         </jsp:include>
     </div>
     <h2 class="titres">Derniers articles du blog</h2>
-    <div>
-        <a class="btn btn-primary" href="add-greenpoint">Créer un Greenpoint</a>
-    </div>
 </div>

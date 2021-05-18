@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<span>Derniers messages du forum</span>
+<span class="titres">Derniers messages du forum</span>
 <ul>
     <c:forEach var="message" items="${messages}">
         <li>

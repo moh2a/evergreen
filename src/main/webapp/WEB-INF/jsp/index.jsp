@@ -15,10 +15,10 @@
 			<div class="sticky-top container-fluid">
 				<div class="row">
 					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Evènements à venir</span>
+						<span class="titres">Evènements à venir</span>
 					</div>
 					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Meilleurs utilisateurs</span>
+						<span class="titres">Meilleurs utilisateurs</span>
 					</div>
 					<div class=" col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
 						<%@include  file="derniersMessages.jsp" %>

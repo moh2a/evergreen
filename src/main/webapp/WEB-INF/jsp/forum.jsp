@@ -9,7 +9,7 @@
         </div>
         <div class="col-xl-7 col-lg-8 col-xs-12 px-1">
             <div class="boite-simple">
-                <h1>Forum</h1>
+                <h1 class="titres">Forum</h1>
                 <nav class="navbar">
                     <button type="button" onclick="toggleFormulaire()" class="btn bouton-evergreen">Nouveau sujet</button>
                 </nav>
