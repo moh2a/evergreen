@@ -97,4 +97,17 @@ public class UserController {
 
 		return "login?error=1";
 	}
+	@GetMapping("/profil")
+	public String profil(Model model) {
+		
+		Optional<User> user = userService.getUser((long)1);
+		model.addAttribute("firstName", user.get().getFirstName());
+		model.addAttribute("lastName", user.get().getLastName());
+		model.addAttribute("birthDate", user.get().getBirthdate());
+		
+
+		return "profil";
+	}
+
 }
+
