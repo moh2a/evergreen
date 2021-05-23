@@ -10,6 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/loginSignUpContact.css">
+        <script type="text/javascript" src="javascript/sign-up.js" async></script>
         <title>Evergreen - Inscription</title>
     </head>
 
@@ -42,7 +43,7 @@
                             </span>
                     <p><input type="checkbox" id="sign-up-form-terms" name="conditionsutilisation" required>J'accepte les conditions d'utilisation</p>
 
-                    <input type="submit" value="Je m'inscris" class="green-button"/>
+                    <input type="submit" value="Je m'inscris" id="submit-button" class="green-button"/>
 
                 </form>
             </div>
@@ -56,7 +57,7 @@
                 ・
                 <a href="#">Politique de confidentialité</a>
                 ・
-                <a href="contact-us">Nous contacter</a>
+                <a href="contact">Nous contacter</a>
             </div>
         </div>
     </body>
