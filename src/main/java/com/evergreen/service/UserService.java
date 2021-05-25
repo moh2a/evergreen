@@ -37,7 +37,9 @@ public class UserService {
 
     public User saveUser(User user) {
     	user.setPassword(hashPassword(user.getPassword()));
-    	user.setRole("Utilisateur");
+    	if(user.getRole()==null) {
+        	user.setRole("Utilisateur");
+    	}
         User savedUser = userRepository.save(user);
         return savedUser;
     }

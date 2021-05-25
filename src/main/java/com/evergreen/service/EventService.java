@@ -8,6 +8,7 @@ import com.evergreen.dao.EventUserRepository;
 import com.evergreen.entities.Event;
 import com.evergreen.entities.EventUser;
 import com.evergreen.entities.User;
+import com.evergreen.entities.UserSession;
 
 import lombok.Data;
 
@@ -18,6 +19,9 @@ import java.util.Optional;
 @Data
 @Service
 public class EventService {
+	@Autowired
+    private EventUserRepository eventUserRepository;
+	
 	@Autowired
     private EventRepository eventRepository;
 	public Optional<Event> getEvent(final Long id) {
@@ -51,6 +55,12 @@ public class EventService {
     	return eventsBefore;
     }
     
+    public EventUser saveParticipation(long eventId, long userId) {
+	    EventUser eventUser = new EventUser(eventId, userId);
+	    eventUserRepository.save(eventUser);
+        return eventUser;
+	
+	}
     
 
 }

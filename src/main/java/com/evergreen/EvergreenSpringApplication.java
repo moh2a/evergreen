@@ -41,7 +41,7 @@ public class EvergreenSpringApplication {
 
 		String dateStr="1999-11-05";
 		Date date = Date.valueOf(dateStr);
-		User user = new User("Baptiste", "Alexandre", "mail@mail.com", "mypassword", date);
+		User user = new User("Baptiste", "Alexandre", "mail@mail.com", "mypassword", date, "Administrateur");
 		userService.saveUser(user);
 		
 		EventService eventService = ctx.getBean(EventService.class);

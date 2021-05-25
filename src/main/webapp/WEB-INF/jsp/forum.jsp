@@ -49,11 +49,11 @@
                         <%@include  file="derniersMessages.jsp" %>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+
 <script>
     (function() {
         'use strict';

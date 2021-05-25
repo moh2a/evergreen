@@ -12,17 +12,34 @@
 
 		    <h1 class="titres">Évènements</h1>
 		    
-		<form style="display: none;" id="sujetForm" class="needs-validation" novalidate method="POST" action="sujet">
-             <div class="form-group">
-                 <label for="titre">Titre</label>
-                 <input name="titre" type="text" class="form-control" id="titre" placeholder="Entrer un titre" maxlength="100" required>
-             </div>
-             <div class="form-group">
-                 <label for="sujet">Sujet</label>
-                 <textarea name="sujet" type="text" class="form-control" id="sujet" placeholder="sujet ... " maxlength="500" required></textarea>
-             </div>
-             <button type="submit" class="btn btn-success">Valider</button>
-         </form>
+		<body id="contact-body">
+        <c:if test="${confirmation}">
+            <script async>
+                window.alert("${confirmationMessage}");
+            </script>
+        </c:if>
+
+        <div id="contact-row-1">
+            <div>
+                <a href="login"><p class="back"><img src="assets/icon/arrow-left.svg" alt="back-icon" width="16px" /> Retour</p></a>
+            </div>
+        </div>
+
+        <div id="contact-row-2">
+            <div>
+                <h2>Nouvel Évènement </h2>
+                <form id="create-event" action="saveEvent" method="POST">
+                    <input type="text" name="nom" id="nom-event" placeholder="Nom" required>
+                    <input type="text" name="description" id="description-event" placeholder="Description" required>
+                    <input type="date" name="date" id="date-event" required>
+                    <input type="text" name="localisation" id="localisation-event" placeholder="Localisation" required>
+
+                    <input type="submit" value="Ajouter l'événement" id="submit-button" class="green-button"/>
+
+                </form>
+            </div>
+        </div>
+        </body>
 	</div>	
 </div>
 <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 px-1">
