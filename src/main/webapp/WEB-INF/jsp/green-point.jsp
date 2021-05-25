@@ -13,26 +13,53 @@
 
                 <div class="row justify-content-md-center">
                     <div class="card" style="width:90%">
-                        <c:if test="${greenPoint.statut eq 'actif'}">
-                        <img class="card-img-top" style="object-fit: cover;max-height:400px"
-                             src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}"
-                             alt="Card image">
-                        </c:if>
-                        <c:if test="${greenPoint.statut eq 'nettoyé'}">
-                            <div class="img-comp-container card-img-top">
-                                <div class="img-comp-img">
-                                    <img src="/images/photos_apres/${greenPoint.idGreenPoint}/${greenPoint.photo_apres}" style="object-fit: cover;height:400px">
+                            <c:if test="${greenPoint.statut eq 'actif'}">
+                                <img class="card-img-top" style="object-fit: cover;max-height:400px"
+                                     src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}"
+                                     alt="Card image">
+                            </c:if>
+                            <c:if test="${greenPoint.statut eq 'nettoyé'}">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                                            class="active"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img alt="Avant" class="d-block w-100"
+                                                 src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}" style="object-fit: cover;width:100%">
+                                        </div><!--style="object-fit: cover;width:100%"-->
+                                        <div class="carousel-item">
+                                            <img alt="Après" class="d-block w-100"
+                                                 src="/images/photos_apres/${greenPoint.idGreenPoint}/${greenPoint.photo_apres}" style="object-fit: cover;width:100%">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                       data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédent</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                       data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>
                                 </div>
-                                <div class="img-comp-img img-comp-overlay">
-                                    <img src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}" style="object-fit: cover;height:400px">
-                                </div>
-                            </div>
-                        </c:if>
+
+
+                            </c:if>
                         <div class="card-body">
                             <h4 class="card-title">Présentation du GreenPoint</h4>
                             <p class="card-text">${greenPoint.description}</p>
                             <div class="btn-group">
-                                <a href="#" class="btn btn-primary nav-item">Nettoyer ce GreenPoint</a>
+                                <c:if test="${greenPoint.statut eq 'actif'}">
+                                    <a href="#" class="btn btn-primary nav-item">Participer</a>
+                                </c:if>
+                                <c:if test="${greenPoint.statut eq 'En cours'}">
+                                    <a href="#" class="btn btn-secondary nav-item">Annuler la participation</a>
+                                    <a href="#" class="btn btn-success nav-item">Valider le nettoyage</a>
+                                </c:if>
                                 <a href="green-point/delete?ref=${greenPoint.idGreenPoint}"
                                    class="btn btn-warning nav-item">Supprimer ce GreenPoint</a>
                             </div>
@@ -61,83 +88,8 @@
         </div>
     </div>
 </div>
-<script>
-    initComparisons();
-    function initComparisons() {
-        var x, i;
-        /*find all elements with an "overlay" class:*/
-        x = document.getElementsByClassName("img-comp-overlay");
-        for (i = 0; i < x.length; i++) {
-            /*once for each "overlay" element:
-            pass the "overlay" element as a parameter when executing the compareImages function:*/
-            compareImages(x[i]);
-        }
-        function compareImages(img) {
-            var slider, img, clicked = 0, w, h;
-            /*get the width and height of the img element*/
-            w = img.offsetWidth;
-            h = img.offsetHeight;
-            /*set the width of the img element to 50%:*/
-            img.style.width = (w / 2) + "px";
-            /*create slider:*/
-            slider = document.createElement("DIV");
-            slider.setAttribute("class", "img-comp-slider");
-            /*insert slider*/
-            img.parentElement.insertBefore(slider, img);
-            /*position the slider in the middle:*/
-            slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
-            slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
-            /*execute a function when the mouse button is pressed:*/
-            slider.addEventListener("mousedown", slideReady);
-            /*and another function when the mouse button is released:*/
-            window.addEventListener("mouseup", slideFinish);
-            /*or touched (for touch screens:*/
-            slider.addEventListener("touchstart", slideReady);
-            /*and released (for touch screens:*/
-            window.addEventListener("touchend", slideFinish);
-            function slideReady(e) {
-                /*prevent any other actions that may occur when moving over the image:*/
-                e.preventDefault();
-                /*the slider is now clicked and ready to move:*/
-                clicked = 1;
-                /*execute a function when the slider is moved:*/
-                window.addEventListener("mousemove", slideMove);
-                window.addEventListener("touchmove", slideMove);
-            }
-            function slideFinish() {
-                /*the slider is no longer clicked:*/
-                clicked = 0;
-            }
-            function slideMove(e) {
-                var pos;
-                /*if the slider is no longer clicked, exit this function:*/
-                if (clicked == 0) return false;
-                /*get the cursor's x position:*/
-                pos = getCursorPos(e)
-                /*prevent the slider from being positioned outside the image:*/
-                if (pos < 0) pos = 0;
-                if (pos > w) pos = w;
-                /*execute a function that will resize the overlay image according to the cursor:*/
-                slide(pos);
-            }
-            function getCursorPos(e) {
-                var a, x = 0;
-                e = e || window.event;
-                /*get the x positions of the image:*/
-                a = img.getBoundingClientRect();
-                /*calculate the cursor's x coordinate, relative to the image:*/
-                x = e.pageX - a.left;
-                /*consider any page scrolling:*/
-                x = x - window.pageXOffset;
-                return x;
-            }
-            function slide(x) {
-                /*resize the image:*/
-                img.style.width = x + "px";
-                /*position the slider:*/
-                slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
-            }
-        }
-    }
-</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <%@include file="footer.jsp" %>

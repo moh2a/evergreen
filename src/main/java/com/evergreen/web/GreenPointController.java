@@ -53,6 +53,9 @@ public class GreenPointController {
     @RequestMapping(value = "green-point", method = RequestMethod.GET)
     public String viewGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
             Long idGreenPoint) {
+        if (!userSession.isConnected()) {
+            return "redirect:/login";
+        }
         model.addAttribute("greenPoint", greenPointService.getGreenPoint(idGreenPoint).get());
         return "green-point";
     }
@@ -73,12 +76,13 @@ public class GreenPointController {
                       @RequestParam(name = "latitude", defaultValue = "0.0") Float latitude,
                       @RequestParam(name = "longitude", defaultValue = "0") Float longitude,
                       @RequestParam(name = "description", defaultValue = "") String description,
+                      @RequestParam(name = "idPosteur") Long idPosteur,
                       @RequestParam("photo_avant") MultipartFile multipartFile) throws IOException {
         String fileName = null;
         if (multipartFile != null) {
             fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         }
-        GreenPoint greenPoint = new GreenPoint(description, "actif", latitude, longitude, fileName, null, null);
+        GreenPoint greenPoint = new GreenPoint(description, "actif", latitude, longitude, fileName, null, null,idPosteur);
         greenPointService.saveGreenPoint(greenPoint);
         if (multipartFile != null) {
             String uploadDir = "images/photos_avant/" + greenPoint.getIdGreenPoint();
@@ -95,7 +99,8 @@ public class GreenPointController {
                        @RequestParam(name = "idGreenPoint", defaultValue = "0") Long idGreenPoint,
                        @RequestParam(name = "description", defaultValue = "") String description,
                        @RequestParam(name = "statut", defaultValue = "En cours") String statut,
-                       @RequestParam(name = "idUser") Long idUser,
+                       @RequestParam(name = "idPosteur") Long idPosteur,
+                       @RequestParam(name = "idNettoyeur") Long idNettoyeur,
                        @RequestParam("photo_apres") MultipartFile multipartFile) throws IOException {
         String fileName = null;
         if (multipartFile != null) {
@@ -105,7 +110,8 @@ public class GreenPointController {
         greenPoint.setDescription(description);
         greenPoint.setLatitude(latitude);
         greenPoint.setLongitude(longitude);
-        greenPoint.setIdUser(idUser);
+        greenPoint.setIdNettoyeur(idNettoyeur);
+        greenPoint.setIdPosteur(idPosteur);
         greenPoint.setStatut(statut);
         greenPoint.setPhoto_apres(fileName);
         if (multipartFile != null) {

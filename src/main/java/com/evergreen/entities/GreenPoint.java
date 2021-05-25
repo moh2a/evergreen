@@ -9,7 +9,8 @@ public class GreenPoint implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long idGreenPoint;
-  private Long idUser;
+  private Long idNettoyeur;
+  private Long idPosteur;
   private Integer score;
   @Column(length = 500)
   private String description;
@@ -22,14 +23,15 @@ public class GreenPoint implements Serializable {
   private Float latitude;
   private Float longitude;
 
-  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, Long idUser) {
+  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, Long idUser, Long idPosteur) {
     this.description = description;
     this.latitude = latitude;
     this.statut = statut;
     this.longitude = longitude;
     this.photo_avant = photo_avant;
     this.photo_apres = photo_apres;
-    this.idUser = idUser;
+    this.idNettoyeur = idUser;
+    this.idPosteur = idPosteur;
   }
 
   public String getPhoto_avant() {
@@ -82,12 +84,28 @@ public GreenPoint() {}
     this.longitude = longitude;
   }
 
-  public Long getIdUser() {
-    return idUser;
+  public Long getIdNettoyeur() {
+    return idNettoyeur;
   }
 
-  public void setIdUser(Long idUser) {
-    this.idUser = idUser;
+  public void setIdNettoyeur(Long idNettoyeur) {
+    this.idNettoyeur = idNettoyeur;
+  }
+
+  public Long getIdPosteur() {
+    return idPosteur;
+  }
+
+  public void setIdPosteur(Long idPosteur) {
+    this.idPosteur = idPosteur;
+  }
+
+  public Integer getScore() {
+    return score;
+  }
+
+  public void setScore(Integer score) {
+    this.score = score;
   }
 
   public String getStatut() {
