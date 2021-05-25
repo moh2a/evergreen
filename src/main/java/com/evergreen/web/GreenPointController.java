@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.evergreen.entities.Message;
+import com.evergreen.entities.UserSession;
 import com.evergreen.service.GreenPointService;
 import com.evergreen.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,15 @@ public class GreenPointController {
     @Autowired
     private GreenPointRepository greenPointDao;
 
+    @Autowired
+    private UserSession userSession;
+
     @GetMapping({"/", "/index"})
     public String index(Model model) {
+        if (!userSession.isConnected()) {
+            return "redirect:/login";
+        }
+
         List<GreenPoint> greenPoints = greenPointService.getGreenPoints();
         List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
         model.addAttribute("messages", messages);

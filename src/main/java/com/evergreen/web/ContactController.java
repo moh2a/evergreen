@@ -1,5 +1,6 @@
 package com.evergreen.web;
 
+import com.evergreen.entities.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,6 +23,7 @@ public class ContactController {
             model.addAttribute("confirmationMessage", confirmationMessage);
             model.addAttribute("confirmation", confirmation);
         }
+
         return "contact";
     }
 
