@@ -96,7 +96,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	public String login(@RequestParam(name = "email") String email,
-						@RequestParam(name = "password") String password, HttpSession session) {
+						@RequestParam(name = "password") String password) {
 
 		Optional<User> user = userService.getUserByEmail(email);
 
@@ -104,7 +104,6 @@ public class UserController {
 			if (UserService.checkPassword(password, user.get().getPassword())) {
 				userSession.setId(user.get().getId());
 				userSession.setRole(user.get().getRole());
-				session.setAttribute("userSession", userSession);
 				return "redirect:/index";
 			}
 
@@ -114,5 +113,13 @@ public class UserController {
 		}
 
 		return "redirect:/login?error=1";
+	}
+
+	@GetMapping("/logout")
+	public String logout() {
+		userSession.setId(null);
+		userSession.setRole(null);
+
+		return "redirect:/login";
 	}
 }
