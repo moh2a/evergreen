@@ -25,6 +25,7 @@
             <li class="nav-item"><span class="fa-li "><i class="fa fa-calendar-o nav-link"></i></span><a class="nav-link" href="events">Evènements</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-comments-o nav-link"></i></span><a class="nav-link" href="forum">Forum</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-pencil-square-o nav-link"></i></span><a class="nav-link" href="event">Blog</a></li>
+            <li class="nav-item"><span class="fa-li "><i class="fa fa-pencil-square-o nav-link"></i></span><a class="nav-link" href="logout">Logout</a></li>
 
         </ul>
     </div>
