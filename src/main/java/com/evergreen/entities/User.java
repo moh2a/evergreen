@@ -43,5 +43,14 @@ public class User {
     	this.password = password;
     	this.birthdate = birthdate;
     }
+    
+    public User(String firstName, String lastName, String email, String password, Date birthdate, String role) {
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.email = email;
+    	this.password = password;
+    	this.birthdate = birthdate;
+    	this.role= role;
+    }
 
 }

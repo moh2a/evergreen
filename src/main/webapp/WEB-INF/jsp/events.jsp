@@ -9,13 +9,19 @@
 		</div>
 		<div class="col-xl-7 col-lg-8 col-xs-12 px-1">
 			<div class="boite-simple">
-
+			<c:if test="${confirmation}">
+	            <script async>
+	                window.alert("${confirmationMessage}");
+	            </script>
+        	</c:if>
+        	
 		    <h1 class="titres">Évènements</h1>
 			    
-	                    <button class="subutton">
-	                    <a class="textbutton" title="Cliquez pour créer un évènement" href="createEvent"> Nouvel Évènement </a>
-	                    </button>
-	               
+			    <c:if test="${isAdministrator}">
+	                <button class="subutton">
+	                	<a class="textbutton" title="Cliquez pour créer un évènement" href="create-event"> Nouvel Évènement </a>
+	                </button>
+	            </c:if>  
 	                
 		    	<span class="titre-partie">
 		    		<h2> Évènements à venir</h2>
@@ -37,8 +43,8 @@
 			    		</ul>
 			    	</div>
 			  
-			    	<button name="Participer" value="" class="subutton">
-			    	<a class="textbutton" title="Cliquez pour participer à cet événement"> Participer </a> 
+			    	<button name="Participer" class="subutton">
+			    	<a href="participate?eventId=${event.id}" class="textbutton" title="Cliquez pour participer à cet événement"> Participer </a> 
 			    	</button>
 		    	</div>
 		    	
