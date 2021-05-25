@@ -21,28 +21,28 @@
                             <c:if test="${greenPoint.statut eq 'nettoyé'}">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                                        <li data-target="#carouselExampleIndicators" style="height: 20px;" data-slide-to="0"
                                             class="active"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                        <li data-target="#carouselExampleIndicators" style="height: 20px;" data-slide-to="1"></li>
                                     </ol>
-                                    <div class="carousel-inner">
+                                    <div class="carousel-inner" style="max-height: 400px;">
                                         <div class="carousel-item active">
                                             <img alt="Avant" class="d-block w-100"
-                                                 src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}" style="object-fit: cover;width:100%">
+                                                 src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}" style="object-fit: cover;width:100%; max-height: 400px;">
                                         </div><!--style="object-fit: cover;width:100%"-->
                                         <div class="carousel-item">
                                             <img alt="Après" class="d-block w-100"
-                                                 src="/images/photos_apres/${greenPoint.idGreenPoint}/${greenPoint.photo_apres}" style="object-fit: cover;width:100%">
+                                                 src="/images/photos_apres/${greenPoint.idGreenPoint}/${greenPoint.photo_apres}" style="object-fit: cover;width:100%;  max-height: 400px;">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                        data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="carousel-control-prev-icon" style="height: 40px;width: 40px;color: #fff;" aria-hidden="true"></span>
                                         <span class="sr-only">Précédent</span>
                                     </a>
                                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
                                        data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="carousel-control-next-icon" style="height: 40px;width: 40px;color: #fff;" aria-hidden="true"></span>
                                         <span class="sr-only">Suivant</span>
                                     </a>
                                 </div>
