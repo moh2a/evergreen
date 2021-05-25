@@ -51,7 +51,9 @@
                             </c:if>
                         <div class="card-body">
                             <h4 class="card-title">Présentation du GreenPoint</h4>
-                            <p class="card-text">${greenPoint.description}</p>
+                            <p class="card-text">Description : ${greenPoint.description}</p>
+                            <p class="card-text">Statut : ${greenPoint.statut}</p>
+                            <p class="card-text">Créateur : ${utilisateur.firstName} ${utilisateur.lastName}</p>
                             <div class="btn-group">
                                 <c:if test="${greenPoint.statut eq 'actif'}">
                                     <a href="#" class="btn btn-primary nav-item">Participer</a>
@@ -60,8 +62,10 @@
                                     <a href="#" class="btn btn-secondary nav-item">Annuler la participation</a>
                                     <a href="#" class="btn btn-success nav-item">Valider le nettoyage</a>
                                 </c:if>
-                                <a href="green-point/delete?ref=${greenPoint.idGreenPoint}"
-                                   class="btn btn-warning nav-item">Supprimer ce GreenPoint</a>
+                                <c:if test="${userRole eq 'Administrateur'}">
+                                    <a href="green-point/delete?ref=${greenPoint.idGreenPoint}"
+                                       class="btn btn-warning nav-item">Supprimer ce GreenPoint</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>

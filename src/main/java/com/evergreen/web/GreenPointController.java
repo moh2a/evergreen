@@ -7,6 +7,7 @@ import com.evergreen.entities.Message;
 import com.evergreen.entities.UserSession;
 import com.evergreen.service.GreenPointService;
 import com.evergreen.service.MessageService;
+import com.evergreen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,9 @@ public class GreenPointController {
     @Autowired
     private UserSession userSession;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping({"/", "/index"})
     public String index(Model model) {
         if (!userSession.isConnected()) {
@@ -46,6 +50,8 @@ public class GreenPointController {
 
     @GetMapping("/add-greenpoint")
     public String newGreenPoint(Model model) {
+        model.addAttribute("userRole", userSession.getRole());
+        model.addAttribute("userId", userSession.getId());
         return "newGreenPoint";
     }
 
@@ -56,7 +62,12 @@ public class GreenPointController {
         if (!userSession.isConnected()) {
             return "redirect:/login";
         }
-        model.addAttribute("greenPoint", greenPointService.getGreenPoint(idGreenPoint).get());
+        GreenPoint gp = greenPointService.getGreenPoint(idGreenPoint).get();
+        model.addAttribute("userRole", userSession.getRole());
+        model.addAttribute("userId", userSession.getId());
+        model.addAttribute("utilisateur", userService.getUser(gp.getIdPosteur()).get());
+        System.out.println(model);
+        model.addAttribute("greenPoint", gp);
         return "green-point";
     }
 

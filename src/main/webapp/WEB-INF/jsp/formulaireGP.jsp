@@ -36,6 +36,7 @@
                     <input id="imageAvant" name="photo_avant" type="file" class="form-control-file border"
                            accept="image/png, image/jpeg" required>
                 </div>
+                <input type="hidden" name="idPosteur" value="${userId}" required>
                 <button type="submit" class="btn btn-success">Valider</button>
             </form>
         </div>

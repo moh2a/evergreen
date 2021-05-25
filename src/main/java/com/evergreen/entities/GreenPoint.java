@@ -23,14 +23,14 @@ public class GreenPoint implements Serializable {
   private Float latitude;
   private Float longitude;
 
-  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, Long idUser, Long idPosteur) {
+  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, Long idNettoyeur, Long idPosteur) {
     this.description = description;
     this.latitude = latitude;
     this.statut = statut;
     this.longitude = longitude;
     this.photo_avant = photo_avant;
     this.photo_apres = photo_apres;
-    this.idNettoyeur = idUser;
+    this.idNettoyeur = idNettoyeur;
     this.idPosteur = idPosteur;
   }
 
