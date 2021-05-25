@@ -39,18 +39,13 @@ public class GreenPointController {
         if (!userSession.isConnected()) {
             return "redirect:/login";
         }
-
         List<GreenPoint> greenPoints = greenPointService.getGreenPoints();
-        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
-        model.addAttribute("messages", messages);
         model.addAttribute("greenPoints", greenPoints);
         return "index";
     }
 
     @GetMapping("/add-greenpoint")
     public String newGreenPoint(Model model) {
-        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
-        model.addAttribute("messages", messages);
         return "newGreenPoint";
     }
 
@@ -58,8 +53,6 @@ public class GreenPointController {
     @RequestMapping(value = "green-point", method = RequestMethod.GET)
     public String viewGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
             Long idGreenPoint) {
-        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
-        model.addAttribute("messages", messages);
         model.addAttribute("greenPoint", greenPointService.getGreenPoint(idGreenPoint).get());
         return "green-point";
     }

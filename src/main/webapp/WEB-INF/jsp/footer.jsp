@@ -19,20 +19,6 @@
                         </li>
                     </ul>
             </nav>
-            <!--<ul class="navbar-nav justify-content-center navbar-light bg-light">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">A propos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Conditions d'utilisation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Politique de confidentialité</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nous contacter</a>
-                </li>
-            </ul>-->
         </div>
     </div>
 </div>
