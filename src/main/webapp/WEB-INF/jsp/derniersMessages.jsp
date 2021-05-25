@@ -14,7 +14,17 @@
             success: function (data) {
                 reponse=data;
                 data.forEach(element => {
-                    $("#liste").append("<li>"+element.message+"<p class='card-text'><small class='text-muted'><fmt:formatDate value='${element.getUpdatedAt()}' pattern='dd/MM/yyyy HH:mm' /> </small></p></li>");
+                    let fullDate = new Date(element.updatedAt);
+                    let jour = fullDate.getDate() + "";
+                    let mois = (fullDate.getMonth() + 1) + "";
+                    let annee = fullDate.getFullYear() + "";
+                    let heure = fullDate.getHours() + "";
+                    let minutes = fullDate.getMinutes() + "";
+                    let seconde = fullDate.getSeconds() + "";
+
+
+                    let displayDate = jour + "/" + mois + "/" + annee + " " + heure + ":" + minutes + ":" + seconde;
+                    $("#liste").append("<li>"+element.message+"<p class='card-text'><small class='text-muted'>"+ displayDate+" </small></p></li>");
                 });
                 return true;
             }

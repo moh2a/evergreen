@@ -25,6 +25,7 @@ public class EvergreenSpringApplication {
 		GreenPointRepository greenPointDao = ctx.getBean(GreenPointRepository.class);
 
 		greenPointDao.save(new GreenPoint("J'ai découvert cet endroit en me promenant dans Paris. Vous savez comme il est rare de trouver un espace de verdure dans cette grande ville. J'ai tout de suite été frappé par la tristesse de ce lieu qui avait pourtant beaucoup de potentiel. Les détritus n'en finissaient pas et empechaient la nature de se développer. Aujourd'hui, j'en appelle à cette grande communauté pour tenter de rendre à ce paysage sa grandeur.", "actif", (float) 48.8811, (float) 2.3500,"greenPointAvant.jpg",null, null));
+		greenPointDao.save(new GreenPoint("Plage très sale", "nettoyé", (float) 48.6651, (float) -1.9919,"plage_avant.jpg","plage_apres.jpg", null));
 		ArticleService articleService = ctx.getBean(ArticleService.class);
 		SujetService sujetService = ctx.getBean(SujetService.class);
 		MessageService messageService = ctx.getBean(MessageService.class);

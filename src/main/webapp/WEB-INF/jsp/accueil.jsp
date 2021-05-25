@@ -9,5 +9,4 @@
             <jsp:param name="mode" value="liste" />
         </jsp:include>
     </div>
-    <h2 class="titres">Derniers articles du blog</h2>
 </div>
