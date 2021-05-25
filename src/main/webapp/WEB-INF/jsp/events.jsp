@@ -11,8 +11,14 @@
 			<div class="boite-simple">
 
 		    <h1 class="titres">Évènements</h1>
+			    
+	                    <button class="subutton">
+	                    <a class="textbutton" title="Cliquez pour créer un évènement" href="createEvent"> Nouvel Évènement </a>
+	                    </button>
+	               
+	                
 		    	<span class="titre-partie">
-		    	<h2>Évènements à venir</h2>
+		    		<h2> Évènements à venir</h2>
 		    	</span>
 		    	 
 		    	<c:forEach var="event" items="${eventsAfter}">  
