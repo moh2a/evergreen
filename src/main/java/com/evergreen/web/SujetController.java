@@ -20,8 +20,6 @@ public class SujetController {
 
     @RequestMapping(value = "forum", method = RequestMethod.GET)
     public String forum(Model model) {
-        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
-        model.addAttribute("messages", messages);
         model.addAttribute("sujets", sujetService.getSujets());
         return "forum";
     }
@@ -29,8 +27,6 @@ public class SujetController {
     @RequestMapping(value = "sujet", method = RequestMethod.GET)
     public String viewSujet(Model model, @RequestParam(name = "ref", defaultValue = "")
             Long idSujet, @RequestParam(name = "mc", defaultValue = "") String mc) {
-        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
-        model.addAttribute("messages", messages);
         model.addAttribute("sujet", sujetService.getSujet(idSujet).get());
         model.addAttribute("reponses", messageService.getMessagesByIdSujet(idSujet));
         return "sujet";
@@ -48,8 +44,6 @@ public class SujetController {
     public String deleteSujet(@RequestParam(name = "ref", defaultValue = "") Long idSujet,
                                 Model model) {
         sujetService.delete(idSujet);
-        List<Message> messages = messageService.getMessagesPaginate(0, 3).getContent();
-        model.addAttribute("messages", messages);
         model.addAttribute("sujets", sujetService.getSujets());
         return "redirect:/forum" ;
     }

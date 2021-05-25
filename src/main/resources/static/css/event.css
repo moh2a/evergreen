@@ -5,13 +5,14 @@
 }
 
 .event{
-	padding:32px;
+	padding: 25px 40px;
 	display: flex;
 	align-items: space-around;
 	justify-content: space-between;
 	
 }
 .textevent{
+	font: Roboto;
 	padding: 8px;
 }
 
@@ -29,6 +30,7 @@
 }
 
 .textbutton{
+	font: Roboto;
 	color: white;
 }
 
@@ -41,8 +43,15 @@
 }
 
 h2{
+	font:Roboto;
+    font-weight: bold;
 	color: white;
 	text-align:left;
 	margin-left:16px;
+	
+}
+h3{
+	font:Roboto;
+    font-weight: bold;
 	
 }

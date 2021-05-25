@@ -1,19 +1,21 @@
 package com.evergreen.entities;
 
 import com.evergreen.entities.Audit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
-import java.io.Serializable;
-
 @Entity
 public class Message extends Audit{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //means autoincrement.
     private Long idMessage;
     private Long idUser;
     @Column(length = 255)
     private String message;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "sujet_id", nullable = false)

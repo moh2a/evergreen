@@ -1,10 +1,12 @@
 package com.evergreen.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
+@Data
 @Entity
 public class Sujet extends Audit{
     @Id

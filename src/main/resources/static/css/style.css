@@ -14,6 +14,7 @@
 
 .body {
     background-color: #E5E5E5;
+    padding: 15px;
 }
 
 .listGP {
@@ -32,6 +33,7 @@ body {
     color:#191919;
     text-align: center;
     font-weight: bold;
+    margin:26px;
 }
 p {
     font-size: 12px !important;

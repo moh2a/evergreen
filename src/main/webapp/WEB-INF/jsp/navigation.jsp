@@ -4,7 +4,8 @@
     <div class="row justify-content-between">
         <div class="logo col-4 col-sm-2 col-md-12 ">
             <a href="index">
-                <img src="assets/LOGO-SITE.png" alt="logo" width="100" height="100">
+                <img src="assets/logo/evegreen-logo-site.svg" alt="logo-evergreen" width="70px" />
+                <!--<img src="assets/LOGO-SITE.png" alt="logo" width="100" height="100">-->
             </a>
         </div>
         <div class=" d-md-none col-4 col-sm-2 col-md-12 conteneurHam">
@@ -20,10 +21,11 @@
     <div id="myNav" class="nav flex-column d-none d-md-block">
         <ul class="fa-ul nav flex-column">
             <li class="nav-item"><span class="fa-li"><i class="fa fa-home nav-link"></i></span><a class="nav-link" href="index">Accueil</a></li>
-            <li class="nav-item"><span class="fa-li "><i class="fa fa-user-o nav-link"></i></span><a class="nav-link" href="profil">Profil</a></li>
-            <li class="nav-item"><span class="fa-li "><i class="fa fa-calendar-o nav-link"></i></span><a class="nav-link" href="event">Evènements</a></li>
+            <li class="nav-item"><span class="fa-li "><i class="fa fa-user-o nav-link"></i></span><a class="nav-link" href="#">Profil</a></li>
+            <li class="nav-item"><span class="fa-li "><i class="fa fa-calendar-o nav-link"></i></span><a class="nav-link" href="events">Evènements</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-comments-o nav-link"></i></span><a class="nav-link" href="forum">Forum</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-pencil-square-o nav-link"></i></span><a class="nav-link" href="event">Blog</a></li>
+            <li class="nav-item"><span class="fa-li "><i class="fa fa-pencil-square-o nav-link"></i></span><a class="nav-link" href="logout">Logout</a></li>
 
         </ul>
     </div>

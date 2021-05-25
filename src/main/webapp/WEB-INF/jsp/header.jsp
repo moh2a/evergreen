@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/event.css"/>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/jquery/jQuery-3.6.0.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body class="body">

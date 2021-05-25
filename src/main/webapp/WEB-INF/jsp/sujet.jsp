@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="header.jsp"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-xl-2 col-lg-2 col-xs-12 px-1 ">
@@ -19,7 +20,11 @@
                             <div class="card border-success">
                                 <div class="card-body">
                                     <p class="card-text">${reponse.message}</p>
-                                    <p class="card-text"><small class="text-muted">${reponse.getCreatedAt()}</small></p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                        <fmt:formatDate value="${reponse.getUpdatedAt()}" pattern="dd/MM/yyyy HH:mm" />
+                                        </small>
+                                    </p>
                                 </div>
                             </div>
                         </c:forEach>

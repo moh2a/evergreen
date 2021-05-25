@@ -60,7 +60,7 @@
                 ・
                 <a href="#">Politique de confidentialité</a>
                 ・
-                <a href="contact-us">Nous contacter</a>
+                <a href="contact">Nous contacter</a>
             </div>
         </div>
     </body>
