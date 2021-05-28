@@ -1,11 +1,12 @@
 package com.evergreen.entities;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
 @Data
 @Entity
 public class Sujet extends Audit{
@@ -13,13 +14,23 @@ public class Sujet extends Audit{
     @GeneratedValue
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy="sujet", cascade={CascadeType.ALL})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Message> messages;
+
+    @Column(name="user_id")
     private Long idUser;
+
+    @OneToOne()
+    @JoinColumn(name = "user_id", insertable=false, updatable=false)
+    private User user;
+
     @Column(length = 500)
     private String sujet;
+
     @Column(length = 100)
     private String titre;
+
     public Sujet(Long idUser, String titre, String sujet){
         this.idUser = idUser;
         this.sujet = sujet;

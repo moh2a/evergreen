@@ -136,6 +136,9 @@ p {
 	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #C4C4C4;
     border: none;
 }
+.reponseUser{
+    color:#43F7B8;
+}
 .line-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 4;

@@ -50,6 +50,9 @@ public class GreenPointController {
 
     @GetMapping("/add-greenpoint")
     public String newGreenPoint(Model model) {
+        if (!userSession.isConnected()) {
+            return "redirect:/login";
+        }
         model.addAttribute("userRole", userSession.getRole());
         model.addAttribute("userId", userSession.getId());
         return "newGreenPoint";
@@ -88,12 +91,13 @@ public class GreenPointController {
                       @RequestParam(name = "longitude", defaultValue = "0") Float longitude,
                       @RequestParam(name = "description", defaultValue = "") String description,
                       @RequestParam(name = "idPosteur") Long idPosteur,
+                      @RequestParam(name = "points") Integer points,
                       @RequestParam("photo_avant") MultipartFile multipartFile) throws IOException {
         String fileName = null;
         if (multipartFile != null) {
             fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         }
-        GreenPoint greenPoint = new GreenPoint(description, "actif", latitude, longitude, fileName, null, null,idPosteur);
+        GreenPoint greenPoint = new GreenPoint(description, "actif", latitude, longitude, fileName, null, null,idPosteur, points);
         greenPointService.saveGreenPoint(greenPoint);
         if (multipartFile != null) {
             String uploadDir = "images/photos_avant/" + greenPoint.getIdGreenPoint();
@@ -112,6 +116,7 @@ public class GreenPointController {
                        @RequestParam(name = "statut", defaultValue = "En cours") String statut,
                        @RequestParam(name = "idPosteur") Long idPosteur,
                        @RequestParam(name = "idNettoyeur") Long idNettoyeur,
+                       @RequestParam(name = "points") Integer points,
                        @RequestParam("photo_apres") MultipartFile multipartFile) throws IOException {
         String fileName = null;
         if (multipartFile != null) {
@@ -125,6 +130,7 @@ public class GreenPointController {
         greenPoint.setIdPosteur(idPosteur);
         greenPoint.setStatut(statut);
         greenPoint.setPhoto_apres(fileName);
+        greenPoint.setPoints(points);
         if (multipartFile != null) {
             String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();
             FileUpload.saveFile(uploadDir, fileName, multipartFile);

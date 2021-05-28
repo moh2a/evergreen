@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    List<Message> findBySujetId(Long sujet_id, Sort updatedAt);
+    //List<Message> findBySujetId(Long sujet_id, Sort updatedAt);
     //Optional<Message> findByIdAndSujetId(Long id_message, Long idSujet);
 }

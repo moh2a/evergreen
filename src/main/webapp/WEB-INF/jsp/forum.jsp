@@ -22,6 +22,7 @@
                         <label for="sujet">Sujet</label>
                         <textarea name="sujet" type="text" class="form-control" id="sujet" placeholder="sujet ... " maxlength="500" required></textarea>
                     </div>
+                    <input type="hidden" name="idUser" value="${userId}" required>
                     <button type="submit" class="btn btn-success">Valider</button>
                 </form>
                 <h2>Liste des sujets : </h2>
@@ -29,6 +30,7 @@
                 <div class="card text-white bg-dark">
                     <div class="card-body">
                         <h4 class="card-title">${sujet.titre}</h4>
+                        <p class="reponseUser">Par : ${sujet.user.firstName} ${sujet.user.lastName}</p>
                         <a class="btn bouton-evergreen" href="sujet?ref=${sujet.idSujet}" class="card-link">Voir</a>
                     </div>
                 </div>

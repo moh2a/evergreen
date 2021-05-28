@@ -32,6 +32,11 @@
                               id="description" required></textarea>
                 </div>
                 <div class="form-group">
+                    <label for="points">Points : </label>
+                    <input type="number" max="100" min="0" step="1" name="points" class="form-control" placeholder="10"
+                              id="points" required>
+                </div>
+                <div class="form-group">
                     <label for="imageAvant">Image : </label>
                     <input id="imageAvant" name="photo_avant" type="file" class="form-control-file border"
                            accept="image/png, image/jpeg" required>

@@ -14,17 +14,42 @@
                     <div class="card-body">
                         <h4 class="card-title titres">${sujet.titre}</h4>
                         <p class="card-text">${sujet.sujet}</p>
+                        <p class="card-text reponseUser"><small class="reponseUser">${sujet.user.firstName} ${sujet.user.lastName}</small></p>
                         <p class="card-text"><small class="text-muted">${sujet.getCreatedAt()}</small></p>
+                        <div class="btn-group">
+                            <c:if test="${ userRole eq 'Administrateur' || userId == sujet.user.id}">
+                                <a href="sujet/delete?ref=${sujet.idSujet}"
+                                   class="btn btn-warning nav-item">Supprimer ce sujet</a>
+                            </c:if>
+                        </div>
                         <h4>Réponses : </h4>
-                        <c:forEach var="reponse" items="${reponses}">
+                        <c:forEach var="reponse" items="${sujet.getMessages()}">
                             <div class="card border-success">
                                 <div class="card-body">
-                                    <p class="card-text">${reponse.message}</p>
-                                    <p class="card-text">
-                                        <small class="text-muted">
-                                        <fmt:formatDate value="${reponse.getUpdatedAt()}" pattern="dd/MM/yyyy HH:mm" />
-                                        </small>
-                                    </p>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <p class="reponseUser">${reponse.getUser().getFirstName()} ${reponse.getUser().getLastName()}</p>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="card-text">${reponse.getMessage()}</p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <fmt:formatDate value="${reponse.getUpdatedAt()}" pattern="dd/MM/yyyy HH:mm" />
+                                                    </small>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="btn-group">
+                                                    <c:if test="${ userRole eq 'Administrateur' || userId == reponse.getIdUser()}">
+                                                        <a href="message/delete?ref=${reponse.getIdMessage()}"
+                                                           class="btn btn-warning nav-item">Supprimer</a>
+                                                    </c:if>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -37,6 +62,7 @@
                         <label for="message">Message</label>
                         <input name="message" type="text" class="form-control" id="message" placeholder="Entrer un message" maxlength="255" required>
                     </div>
+                    <input type="hidden" name="idUser" value="${userId}" required>
                     <button type="submit" class="btn btn-success">Valider</button>
                 </form>
             </div>
