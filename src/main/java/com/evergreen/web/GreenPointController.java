@@ -3,7 +3,9 @@ package com.evergreen.web;
 import java.io.IOException;
 import java.util.List;
 
+import com.evergreen.Statut;
 import com.evergreen.entities.Message;
+import com.evergreen.entities.User;
 import com.evergreen.entities.UserSession;
 import com.evergreen.service.GreenPointService;
 import com.evergreen.service.MessageService;
@@ -135,6 +137,41 @@ public class GreenPointController {
             String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();
             FileUpload.saveFile(uploadDir, fileName, multipartFile);
         }
+        return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
+
+    }
+    @RequestMapping(value = "/validation", method = RequestMethod.POST)
+    public String validation(Model model,
+                       @RequestParam(name = "idNettoyeur") Long idNettoyeur,
+                             @RequestParam(name = "idGreenPoint") Long idGreenPoint,
+                       @RequestParam("photo_apres") MultipartFile multipartFile) throws IOException {
+        String fileName = null;
+        String statut = "nettoyé";
+        if (multipartFile != null) {
+            fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        }
+        GreenPoint greenPoint = greenPointService.getGreenPoint(idGreenPoint).get();
+        User user = userService.getUser(idNettoyeur).get();
+        greenPoint.setIdNettoyeur(idNettoyeur);
+        greenPoint.setStatut(statut);
+        greenPoint.setPhoto_apres(fileName);
+        if (multipartFile != null) {
+            String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();
+            FileUpload.saveFile(uploadDir, fileName, multipartFile);
+        }
+        return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
+
+    }
+    @RequestMapping(value = "/statut", method = RequestMethod.PUT)
+    public String validation(Model model,
+                             @RequestParam(name = "statut") String statut,
+                             @RequestParam(name = "idGreenPoint") Long idGreenPoint,
+                             @RequestParam(name = "idNettoyeur") Long idNettoyeur) {
+        GreenPoint greenPoint = greenPointService.getGreenPoint(idGreenPoint).get();
+        if(statut == Statut.Réservé.name()){
+            greenPoint.setIdNettoyeur(idNettoyeur);
+        };
+        greenPoint.setStatut(statut);
         return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
 
     }

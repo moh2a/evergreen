@@ -13,12 +13,12 @@
 
                 <div class="row justify-content-md-center">
                     <div class="card" style="width:90%">
-                            <c:if test="${greenPoint.statut eq 'actif'}">
+                            <c:if test="${greenPoint.statut eq 'Actif'}">
                                 <img class="card-img-top" style="object-fit: cover;max-height:400px"
                                      src="/images/photos_avant/${greenPoint.idGreenPoint}/${greenPoint.photo_avant}"
                                      alt="Card image">
                             </c:if>
-                            <c:if test="${greenPoint.statut eq 'nettoyé'}">
+                            <c:if test="${greenPoint.statut eq 'Nettoyé'}">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" style="height: 20px;" data-slide-to="0"
@@ -55,10 +55,10 @@
                             <p class="card-text">Statut : ${greenPoint.statut}</p>
                             <p class="card-text">Créateur : ${utilisateur.firstName} ${utilisateur.lastName}</p>
                             <div class="btn-group">
-                                <c:if test="${greenPoint.statut eq 'actif'}">
+                                <c:if test="${greenPoint.statut eq 'Actif'}">
                                     <a href="#" class="btn btn-primary nav-item">Participer</a>
                                 </c:if>
-                                <c:if test="${greenPoint.statut eq 'En cours'}">
+                                <c:if test="${greenPoint.statut eq 'Réservé'}">
                                     <a href="#" class="btn btn-secondary nav-item">Annuler la participation</a>
                                     <a href="#" class="btn btn-success nav-item">Valider le nettoyage</a>
                                 </c:if>
