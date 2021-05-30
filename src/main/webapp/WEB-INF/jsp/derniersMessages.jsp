@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<div class="card border-light  " style="width: 100%; ">
+<div class="card   " style="width: 100%; background-color: #3ff992; border-color: #3ff992">
     <h6 class=" titres">Derniers messages du forum</h6>
     <ul class="list-group list-group-flush" id="liste">
     </ul>

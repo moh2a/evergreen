@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!--<div style="margin-top: 20px;" id="listeUtilisateurs">
 </div>-->
-<div class="card border-light" style="width: 100%">
+<div class="card " style="width: 100%; border-color: #d39e00; background-color: #d39e00;">
     <h6 class=" titres ">Meilleurs utilisateurs</h6>
     <ul class="list-group list-group-flush" id="listeUtilisateurs">
     </ul>
