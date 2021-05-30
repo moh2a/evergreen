@@ -34,6 +34,8 @@ public class User {
     
     private String role;
 
+    private int score;
+
     public User() { };
     
     public User(String firstName, String lastName, String email, String password, Date birthdate) {
