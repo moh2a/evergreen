@@ -21,7 +21,7 @@
     <div id="myNav" class="nav flex-column d-none d-md-block">
         <ul class="fa-ul nav flex-column">
             <li class="nav-item"><span class="fa-li"><i class="fa fa-home nav-link"></i></span><a class="nav-link" href="index">Accueil</a></li>
-            <li class="nav-item"><span class="fa-li "><i class="fa fa-user-o nav-link"></i></span><a class="nav-link" href="#">Profil</a></li>
+            <li class="nav-item"><span class="fa-li "><i class="fa fa-user-o nav-link"></i></span><a class="nav-link" href="profil">Profil</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-calendar-o nav-link"></i></span><a class="nav-link" href="events">Evènements</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-comments-o nav-link"></i></span><a class="nav-link" href="forum">Forum</a></li>
             <li class="nav-item"><span class="fa-li "><i class="fa fa-pencil-square-o nav-link"></i></span><a class="nav-link" href="event">Blog</a></li>

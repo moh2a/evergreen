@@ -124,8 +124,10 @@ public class UserController {
 	}
 	@GetMapping("/profil")
 	public String profil(Model model) {
-		
-		Optional<User> user = userService.getUser((long)1);
+		if (!userSession.isConnected()) {
+			return "redirect:/login";
+		}
+		Optional<User> user = userService.getUser(userSession.getId());
 		model.addAttribute("firstName", user.get().getFirstName());
 		model.addAttribute("lastName", user.get().getLastName());
 		model.addAttribute("birthDate", user.get().getBirthdate());
