@@ -1,6 +1,7 @@
 package com.evergreen.web;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +25,39 @@ public class EventController {
 	private EventService eventService;
 	
 	@GetMapping("/events")
-	public String events(@RequestParam(required = false) boolean confirmation, Model model) {
+	public String events(@RequestParam(required = false) Optional<Integer> confirmation, @RequestParam(required = false) boolean errorId, Model model) {
 		if(!userSession.isConnected()) {
 			return "redirect:/login";
 		}
 		Iterable<Event> eventsAfter = eventService.getEventsAfter(); 
 		model.addAttribute("eventsAfter", eventsAfter );
+		
 		Iterable<Event> eventsBefore = eventService.getEventsBefore(); 
 		model.addAttribute("eventsBefore", eventsBefore );
 		
-		if (confirmation) {
-            String confirmationMessage = "L'évènement a bien été ajouté.";
+		ArrayList<Long> eventsId = eventService.getParticipatedEvents(userSession.getId());
+		model.addAttribute("eventsId", eventsId);
+		
+		if (confirmation.isPresent()) {
+            String confirmationMessage = "";
+            if (confirmation.get() == 1) {
+				confirmationMessage = "L'évènement a bien été ajouté.";
+			}
+
+			else if (confirmation.get() == 2) {
+				confirmationMessage = "Vous participation a bien été prise en compte.";
+			}
+            
             model.addAttribute("confirmationMessage", confirmationMessage);
-            model.addAttribute("confirmation", confirmation);
+            model.addAttribute("confirmation", true);
         }
+		
+		if (errorId) {
+            String errorMessage = "Il y a eu une erreur dans votre inscription, réessayez ultérieurement";
+            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("errorId", errorId);
+        }
+		
 		model.addAttribute("isAdministrator", userSession.isAdministrator());
 		return "events";
 	}
@@ -50,7 +70,7 @@ public class EventController {
 		Date date = Date.valueOf(dateStr);
 		Event event = new Event(nom, description, localisation, date);
 		eventService.saveEvent(event);
-		return "redirect:/events?confirmation=true";
+		return "redirect:/events?confirmation=1";
 	}
 	
 	@GetMapping("/create-event")
@@ -71,11 +91,12 @@ public class EventController {
 		}
 		
 		if(eventId.isEmpty()) {
-			return "redirect:/events";
+			return "redirect:/events?errorId=true";
 		}
 		
 		eventService.saveParticipation(eventId.get(),userSession.getId());
-		return "redirect:/events";
+		return "redirect:/events?confirmation=2";
 	}
+	
 	
 }

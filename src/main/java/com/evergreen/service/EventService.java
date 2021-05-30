@@ -14,6 +14,7 @@ import lombok.Data;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Data
@@ -62,5 +63,12 @@ public class EventService {
 	
 	}
     
-
+    public ArrayList<Long> getParticipatedEvents(long userId) {
+    	Iterable<EventUser> eventUsers = eventUserRepository.findEventUsersByUserId(userId);
+    	ArrayList<Long> eventsId = new ArrayList<>();
+    	for (EventUser eventUser:eventUsers) {
+    		eventsId.add(eventUser.getEventId());
+    	}
+    	return eventsId;
+    }
 }

@@ -18,23 +18,32 @@
                 window.alert("${confirmationMessage}");
             </script>
         </c:if>
+        <c:if test="${errorId}">
+            <script async>
+                window.alert("${errorMessage}");
+            </script>
+        </c:if>
 
         <div id="contact-row-1">
             <div>
-                <a href="login"><p class="back"><img src="assets/icon/arrow-left.svg" alt="back-icon" width="16px" /> Retour</p></a>
+                <a href="events"><p class="back"><img src="assets/icon/arrow-left.svg" alt="back-icon" width="16px" /> Retour</p></a>
             </div>
         </div>
 
         <div id="contact-row-2">
             <div>
-                <h2>Nouvel Évènement </h2>
-                <form id="create-event" action="saveEvent" method="POST">
+            	<span class="titre-partie">
+                <h2> Nouvel Évènement </h2>
+                </span>
+                
+                <form class="create-event" action="saveEvent" method="POST">
                     <input type="text" name="nom" id="nom-event" placeholder="Nom" required>
-                    <input type="text" name="description" id="description-event" placeholder="Description" required>
+                    <textarea name="description" id="description-event" placeholder="Description" required></textarea>
+                    <div id="date-loc">
                     <input type="date" name="date" id="date-event" required>
                     <input type="text" name="localisation" id="localisation-event" placeholder="Localisation" required>
-
-                    <input type="submit" value="Ajouter l'événement" id="submit-button" class="green-button"/>
+					</div>
+                    <input type="submit" value="Ajouter l'événement" id="submit-button" class="subutton"/>
 
                 </form>
             </div>

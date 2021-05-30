@@ -42,10 +42,24 @@
 			    	<h4> ${event.date}</h4></li>
 			    		</ul>
 			    	</div>
-			  
+			    	<c:set var="contains" value="false" />
+					<c:forEach var="eventId" items="${eventsId}">
+					  <c:if test="${eventId eq event.id}">
+					    <c:set var="contains" value="true" />
+					  </c:if>
+					</c:forEach>
+					
+					<c:choose>
+					<c:when test="${contains}">
+						<p>Vous participez à cet évènement</p>
+			    	</c:when>
+			    	
+			    	<c:otherwise>
 			    	<button name="Participer" class="subutton">
 			    	<a href="participate?eventId=${event.id}" class="textbutton" title="Cliquez pour participer à cet événement"> Participer </a> 
 			    	</button>
+			    	</c:otherwise>
+			    	</c:choose>
 		    	</div>
 		    	
 		    	</c:forEach>

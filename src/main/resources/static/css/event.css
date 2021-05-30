@@ -22,11 +22,18 @@
 }
 
 .subutton{
-	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #43F7B8;
-	border-radius: 32px;
-	border: none;
-	font-size: 16px;
-	padding: 16px;
+	background: linear-gradient(180deg, #42F7B1 0%, #36FC59 100%);
+    border-radius: 50px;
+    height: 48px;
+    box-shadow: none;
+    border: none;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 0 24px 0 24px;
+    margin-bottom:8px;
+    margin-left:8px;
 }
 
 .textbutton{
@@ -39,19 +46,41 @@
 	width: 100%;
 	height: 48px;
 	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #43F7B8;
+	margin:0px 0px 8px 0px;
+	padding-left:8px;
+	padding-top:6px;
+	color:white;
+	line-height:1;
 	
 }
 
-h2{
-	font:Roboto;
-    font-weight: bold;
-	color: white;
-	text-align:left;
-	margin-left:16px;
-	
-}
 h3{
 	font:Roboto;
     font-weight: bold;
 	
+}
+
+.create-event{
+	margin:8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#date-loc{
+	display:flex;
+	justify-content: space-around;
+	width:70%;
+}
+
+
+#description-event {
+    width: 432px;
+    height: 232px;
+    background: #F1F1F1;
+    border-radius: 5px;
+    border: none;
+    padding: 16px;
+    margin-top: 32px;
+    font-size: 16px;
 }
