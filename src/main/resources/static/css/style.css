@@ -149,4 +149,6 @@ p {
     text-overflow: ellipsis;
 
 }
-
+.gras{
+    font-weight: bold;
+}

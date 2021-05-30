@@ -30,8 +30,8 @@ public class EvergreenSpringApplication {
 
 		String dateStr="1999-11-05";
 		Date date = Date.valueOf(dateStr);
-		User user = new User("Baptiste", "Alexandre", "mail@mail.com", "mypassword", date, "Administrateur");
-		User user2 = new User("Jean", "PASCAL", "jean.pascal@mail.com", "mypassword", date, "Utilisateur");
+		User user = new User("Baptiste", "Alexandre", "mail@mail.com", "mypassword", date, "Administrateur", 59);
+		User user2 = new User("Jean", "PASCAL", "jean.pascal@mail.com", "mypassword", date, "Utilisateur", 9);
 		userService.saveUser(user);
 		userService.saveUser(user2);
 

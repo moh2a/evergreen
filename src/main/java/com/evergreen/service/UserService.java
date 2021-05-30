@@ -3,8 +3,13 @@ package com.evergreen.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.evergreen.entities.Message;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.evergreen.dao.UserRepository;
@@ -60,5 +65,9 @@ public class UserService {
     
     public static boolean checkPassword(String password, String hashedPassword) {
         return BCrypt.checkpw(password, hashedPassword);
+    }
+    public Page<User> getUsersPaginate(Integer start, Integer end) {
+        Pageable firstPageWithThreeElements = PageRequest.of(start, end, Sort.by("score").descending());
+        return userRepository.findAll(firstPageWithThreeElements);
     }
 }

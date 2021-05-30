@@ -81,7 +81,7 @@
                         <span>Evènements à venir</span>
                     </div>
                     <div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-                        <span>Meilleurs utilisateurs</span>
+                        <%@include  file="best-users.jsp" %>
                     </div>
                     <div class=" col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
                         <%@include file="derniersMessages.jsp" %>

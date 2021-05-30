@@ -1,6 +1,7 @@
 package com.evergreen.entities;
 
 import com.evergreen.entities.Audit;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -18,6 +19,7 @@ public class Message extends Audit{
     @OneToOne()
     @JoinColumn(name = "user_id", insertable=false, updatable=false)
     private User user;
+    @JsonIgnore
 
     @ManyToOne()
     @JoinColumn(name="sujet_id" ,nullable = false)

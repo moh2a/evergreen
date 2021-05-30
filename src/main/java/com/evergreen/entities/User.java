@@ -38,21 +38,23 @@ public class User {
 
     public User() { };
     
-    public User(String firstName, String lastName, String email, String password, Date birthdate) {
+    public User(String firstName, String lastName, String email, String password, Date birthdate, Integer score) {
     	this.firstName = firstName;
     	this.lastName = lastName;
     	this.email = email;
     	this.password = password;
     	this.birthdate = birthdate;
+    	this.score = score;
     }
     
-    public User(String firstName, String lastName, String email, String password, Date birthdate, String role) {
+    public User(String firstName, String lastName, String email, String password, Date birthdate, String role, Integer score) {
     	this.firstName = firstName;
     	this.lastName = lastName;
     	this.email = email;
     	this.password = password;
     	this.birthdate = birthdate;
     	this.role= role;
+        this.score = score;
     }
 
 }

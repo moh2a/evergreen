@@ -88,7 +88,7 @@ public class UserController {
 				return "redirect:/sign-up?error=1";
 			}
 
-			User user = new User(lastName, firstName, email, password, birthdate);
+			User user = new User(lastName, firstName, email, password, birthdate, 0);
 			userService.saveUser(user);
 
 			return "redirect:/login?confirmation=true";
