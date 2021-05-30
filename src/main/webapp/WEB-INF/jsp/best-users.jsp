@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<span class="titres">Meilleurs utilisateurs</span>
 <!--<div style="margin-top: 20px;" id="listeUtilisateurs">
 </div>-->
-<div class="card">
+<div class="card border-light" style="width: 100%">
+    <h6 class=" titres ">Meilleurs utilisateurs</h6>
     <ul class="list-group list-group-flush" id="listeUtilisateurs">
     </ul>
 </div>

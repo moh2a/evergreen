@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<span class="titres">Derniers messages du forum</span>
-<ul id="liste">
-</ul>
-
-<p class="card-text"><small class="text-muted"><a href="forum">Accéder au forum</a></small></p>
+<div class="card border-light  " style="width: 100%; ">
+    <h6 class=" titres">Derniers messages du forum</h6>
+    <ul class="list-group list-group-flush" id="liste">
+    </ul>
+    <p class="card-text"><small class="text-muted"><a href="forum">Accéder au forum</a></small></p>
+</div>
 <script>
     $(document).ready(function(){
         $.ajax({
@@ -24,7 +25,7 @@
 
 
                     let displayDate = jour + "/" + mois + "/" + annee + " " + heure + ":" + minutes + ":" + seconde;
-                    $("#liste").append("<li>"+element.message+"<p class='card-text'><small class='text-muted'>"+ displayDate+" </small></p></li>");
+                    $("#liste").append("<li class='list-group-item'>"+element.message+"<p class='card-text'><small class='text-muted'>"+ displayDate+" </small></p></li>");
                 });
                 return true;
             }
