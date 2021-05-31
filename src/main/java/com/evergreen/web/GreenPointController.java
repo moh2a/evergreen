@@ -75,17 +75,47 @@ public class GreenPointController {
         model.addAttribute("greenPoint", gp);
         return "green-point";
     }
+    @RequestMapping(value = "participer", method = RequestMethod.GET)
+    public String participer(Model model, @RequestParam(name = "gp", defaultValue = "")
+            Long idGreenPoint,@RequestParam(name = "user", defaultValue = "")
+            Long idUser
+                             ) {
+        if (!userSession.isConnected()) {
+            return "redirect:/login";
+        }
+        GreenPoint gp = greenPointService.getGreenPoint(idGreenPoint).get();
+        gp.setIdNettoyeur(idUser);
+        gp.setStatut(Statut.Réservé.name());
+        greenPointService.saveGreenPoint(gp);
+        return "redirect:green-point?ref="+gp.getIdGreenPoint();
+    }
+    @RequestMapping(value = "annuler", method = RequestMethod.GET)
+    public String participer(Model model, @RequestParam(name = "gp", defaultValue = "")
+            Long idGreenPoint
+    ) {
+        if (!userSession.isConnected()) {
+            return "redirect:/login";
+        }
+        GreenPoint gp = greenPointService.getGreenPoint(idGreenPoint).get();
+        gp.setIdNettoyeur(null);
+        gp.setStatut(Statut.Actif.name());
+        greenPointService.saveGreenPoint(gp);
+        return "redirect:green-point?ref="+gp.getIdGreenPoint();
+    }
 
     @RequestMapping(value = "green-point/delete", method = RequestMethod.GET)
     public String deleteGreenPoint(Model model, @RequestParam(name = "ref", defaultValue = "")
             Long idGreenPoint) {
         String uploadDir = "images/photos_avant/" + idGreenPoint;
+        String uploadDir2 = "images/photos_apres/" + idGreenPoint;
         FileUpload.deleteFile(uploadDir);
+        FileUpload.deleteFile(uploadDir2);
         greenPointService.deleteGreenPoint((idGreenPoint));
         List<GreenPoint> greenPoints = greenPointService.getGreenPoints();
         model.addAttribute("greenPoints", greenPoints);
         return "redirect:/index";
     }
+
 
     @RequestMapping(value = "/add-greenpoint", method = RequestMethod.POST)
     public String add(Model model,
@@ -99,7 +129,7 @@ public class GreenPointController {
         if (multipartFile != null) {
             fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         }
-        GreenPoint greenPoint = new GreenPoint(description, "actif", latitude, longitude, fileName, null, null,idPosteur, points);
+        GreenPoint greenPoint = new GreenPoint(description, Statut.Actif.name(), latitude, longitude, fileName, null, null,idPosteur, points);
         greenPointService.saveGreenPoint(greenPoint);
         if (multipartFile != null) {
             String uploadDir = "images/photos_avant/" + greenPoint.getIdGreenPoint();
@@ -109,56 +139,25 @@ public class GreenPointController {
 
     }
 
-    @RequestMapping(value = "/green-point", method = RequestMethod.PUT)
-    public String edit(Model model,
-                       @RequestParam(name = "latitude", defaultValue = "0.0") Float latitude,
-                       @RequestParam(name = "longitude", defaultValue = "0") Float longitude,
-                       @RequestParam(name = "idGreenPoint", defaultValue = "0") Long idGreenPoint,
-                       @RequestParam(name = "description", defaultValue = "") String description,
-                       @RequestParam(name = "statut", defaultValue = "En cours") String statut,
-                       @RequestParam(name = "idPosteur") Long idPosteur,
-                       @RequestParam(name = "idNettoyeur") Long idNettoyeur,
-                       @RequestParam(name = "points") Integer points,
-                       @RequestParam("photo_apres") MultipartFile multipartFile) throws IOException {
-        String fileName = null;
-        if (multipartFile != null) {
-            fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        }
-        GreenPoint greenPoint = greenPointService.getGreenPoint(idGreenPoint).get();
-        greenPoint.setDescription(description);
-        greenPoint.setLatitude(latitude);
-        greenPoint.setLongitude(longitude);
-        greenPoint.setIdNettoyeur(idNettoyeur);
-        greenPoint.setIdPosteur(idPosteur);
-        greenPoint.setStatut(statut);
-        greenPoint.setPhoto_apres(fileName);
-        greenPoint.setPoints(points);
-        if (multipartFile != null) {
-            String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();
-            FileUpload.saveFile(uploadDir, fileName, multipartFile);
-        }
-        return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
-
-    }
     @RequestMapping(value = "/validation", method = RequestMethod.POST)
     public String validation(Model model,
-                       @RequestParam(name = "idNettoyeur") Long idNettoyeur,
                              @RequestParam(name = "idGreenPoint") Long idGreenPoint,
                        @RequestParam("photo_apres") MultipartFile multipartFile) throws IOException {
         String fileName = null;
-        String statut = "nettoyé";
         if (multipartFile != null) {
             fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         }
         GreenPoint greenPoint = greenPointService.getGreenPoint(idGreenPoint).get();
-        User user = userService.getUser(idNettoyeur).get();
-        greenPoint.setIdNettoyeur(idNettoyeur);
-        greenPoint.setStatut(statut);
+        User user = userService.getUser(greenPoint.getIdNettoyeur()).get();
+        user.setScore(user.getScore()+greenPoint.getPoints());
         greenPoint.setPhoto_apres(fileName);
+        greenPoint.setStatut(Statut.Nettoyé.name());
+        System.out.println("laa"+ greenPoint);
         if (multipartFile != null) {
-            String uploadDir = "src/main/resources/static/images/photos_apres/" + greenPoint.getIdGreenPoint();
+            String uploadDir = "images/photos_apres/" + greenPoint.getIdGreenPoint();
             FileUpload.saveFile(uploadDir, fileName, multipartFile);
         }
+        greenPointService.saveGreenPoint(greenPoint);
         return "redirect:/green-point?ref=" + greenPoint.getIdGreenPoint();
 
     }
