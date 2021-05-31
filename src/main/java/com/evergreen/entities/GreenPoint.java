@@ -11,9 +11,6 @@ public class GreenPoint implements Serializable {
   private Long idGreenPoint;
   private Long idNettoyeur;
   private Long idPosteur;
-  @ManyToOne()
-  @JoinColumn(name="user_id" ,nullable = false)
-  private User user;
   private Integer points;
   @Column(length = 500)
   private String description;
@@ -26,14 +23,14 @@ public class GreenPoint implements Serializable {
   private Float latitude;
   private Float longitude;
 
-  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, User user, Long idPosteur, Integer points) {
+  public GreenPoint(String description,String statut, Float latitude, Float longitude, String photo_avant, String photo_apres, Long idNettoyeur, Long idPosteur, Integer points) {
     this.description = description;
     this.latitude = latitude;
     this.statut = statut;
     this.longitude = longitude;
     this.photo_avant = photo_avant;
     this.photo_apres = photo_apres;
-    this.user = user;
+    this.idNettoyeur = idNettoyeur;
     this.idPosteur = idPosteur;
     this.points = points;
   }

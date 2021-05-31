@@ -2,6 +2,7 @@ package com.evergreen.web;
 
 import com.evergreen.entities.GreenPoint;
 import com.evergreen.entities.UserSession;
+import com.evergreen.service.GreenPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private GreenPointService greenPointService;
 
 	@Autowired
 	private UserSession userSession;
@@ -128,6 +131,8 @@ public class UserController {
 			return "redirect:/login";
 		}
 		Optional<User> user = userService.getUser(userSession.getId());
+		model.addAttribute("greenPoints", greenPointService.findGreenPointsByIdNettoyeur(user.get().getId()));
+		System.out.println("userrrrr"+ greenPointService.findGreenPointsByIdNettoyeur(user.get().getId()));
 		model.addAttribute("firstName", user.get().getFirstName());
 		model.addAttribute("lastName", user.get().getLastName());
 		model.addAttribute("birthDate", user.get().getBirthdate());

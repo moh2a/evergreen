@@ -23,10 +23,6 @@ import lombok.Getter;
 @Getter
 @Table(name="users")
 public class User {
-	 @OneToMany(mappedBy="user", cascade={CascadeType.ALL})
-	    @OnDelete(action = OnDeleteAction.CASCADE)
-	    private List<GreenPoint> greenPoints;
-	 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
