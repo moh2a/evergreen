@@ -3,8 +3,7 @@ package com.evergreen.web;
 import java.io.IOException;
 import java.util.List;
 
-import com.evergreen.Statut;
-import com.evergreen.entities.Message;
+import util.Statut;
 import com.evergreen.entities.User;
 import com.evergreen.entities.UserSession;
 import com.evergreen.service.GreenPointService;

@@ -14,7 +14,9 @@
      <h3>${firstName}</h3>
      <h3 class="infprofil">${lastName}</h3>
      <h3 class="infprofil">${birthDate}</h3>
-     <p>${greenPoints[0].getStatut()}</p>
+	<c:forEach var="greenPoint" items="${greenPoints}">
+     <p>Green Points : ${greenPoint.getIdGreenPoint()} ${greenPoint.getStatut()}</p>
+	</c:forEach>
      
      
      <nav class="navbar">

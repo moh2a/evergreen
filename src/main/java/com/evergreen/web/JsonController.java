@@ -27,7 +27,6 @@ public class JsonController {
     @GetMapping("/best-users")
     List<User> bestUsers() {
         List<User> users = userService.getUsersPaginate(0,3).getContent();
-        System.out.println("laaaaaaaaaa"+users);
         return users;
     }
 }

@@ -14,6 +14,7 @@ import com.evergreen.service.UserService;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import util.Statut;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -44,10 +45,8 @@ public class EvergreenSpringApplication {
 		sujetService.save(sujet);
 		Message message = new Message(2L, sujet, "C'est triste!");
 		messageService.save(message);
-		/*Message message = new Message(2L, sujet,"C'est triste!");
 		Message message2 = new Message(1L, sujet,"Depuis les années 1970, la date du Jour du dépassement se dégrade.");
-		messageService.save(message);
-		messageService.save(message2);*/
+		messageService.save(message2);
 		Article article = new Article("Le trashtag challenge","Un challenge en adéquation avec EverGreen", "testestestetstetstetstets","image.png");
 		articleService.save(article);
 
