@@ -24,7 +24,7 @@
             </script>
         </c:if>
 
-        <div id="contact-row-1">
+        <div id="event-row-1">
             <div>
                 <a href="events"><p class="back"><img src="assets/icon/arrow-left.svg" alt="back-icon" width="16px" /> Retour</p></a>
             </div>
@@ -37,11 +37,11 @@
                 </span>
                 
                 <form class="create-event" action="saveEvent" method="POST">
-                    <input type="text" name="nom" id="nom-event" placeholder="Nom" required>
+                    <input type="text" name="nom" id="create-event" placeholder="Nom" required>
                     <textarea name="description" id="description-event" placeholder="Description" required></textarea>
                     <div id="date-loc">
-                    <input type="date" name="date" id="date-event" required>
-                    <input type="text" name="localisation" id="localisation-event" placeholder="Localisation" required>
+                    <input type="date" name="date" id="create-event" min="${currentDate}" required>
+                    <input type="text" name="localisation" id="create-event" placeholder="Localisation" required>
 					</div>
                     <input type="submit" value="Ajouter l'événement" id="submit-button" class="subutton"/>
 
@@ -49,24 +49,9 @@
             </div>
         </div>
         </body>
-	</div>	
-</div>
-<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 px-1">
-			<div class="sticky-top container-fluid">
-				<div class="row">
-					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Evènements à venir</span>
-					</div>
-					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Meilleurs utilisateurs</span>
-					</div>
-					<div class=" col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Derniers messages du forum</span>
-					</div>
-				</div>
-				
 			</div>	
 		</div>
+	<%@include file="widgets.jsp" %>
 	</div>
 </div>
 <%@include  file="footer.jsp" %>

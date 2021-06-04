@@ -70,9 +70,14 @@ h3{
 #date-loc{
 	display:flex;
 	justify-content: space-around;
-	width:70%;
+	width:48%;
 }
 
+.back{
+	margin-left:16px;
+	font:Roboto;
+	color:#43F7B8;
+}
 
 #description-event {
     width: 432px;
@@ -83,4 +88,22 @@ h3{
     padding: 16px;
     margin-top: 32px;
     font-size: 16px;
+}
+
+#create-event{
+	background: #F1F1F1;
+    border-radius: 5px;
+    border: none;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: 16px;
+	
+}
+
+#textMessage {
+	display:flex;
+	font-style:italic;
+	Justify-content:center;
+	margin-top:8px;
 }

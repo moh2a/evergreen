@@ -1,9 +1,11 @@
 package com.evergreen.web;
 
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import org.assertj.core.internal.Iterables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +33,31 @@ public class EventController {
 		}
 		Iterable<Event> eventsAfter = eventService.getEventsAfter(); 
 		model.addAttribute("eventsAfter", eventsAfter );
+		int countAfter = 0;
+		for(Event event:eventsAfter) {
+			countAfter += 1;
+			
+		}
+		
+		if(countAfter==0) {
+			String messageNoAfter = "Il n'y a pas d'évènements à venir";
+			model.addAttribute("noEventAfter", true);
+			model.addAttribute("messageNoAfter", messageNoAfter);
+		}
 		
 		Iterable<Event> eventsBefore = eventService.getEventsBefore(); 
 		model.addAttribute("eventsBefore", eventsBefore );
+		
+		int countBefore = 0;
+		for(Event event:eventsBefore) {
+			countBefore += 1;
+			
+		}
+		if(countBefore==0) {
+			String messageNoBefore = "Il n'y a pas d'évènements passés";
+			model.addAttribute("noEventBefore", true);
+			model.addAttribute("messageNoBefore", messageNoBefore);
+		}
 		
 		ArrayList<Long> eventsId = eventService.getParticipatedEvents(userSession.getId());
 		model.addAttribute("eventsId", eventsId);
@@ -45,7 +69,15 @@ public class EventController {
 			}
 
 			else if (confirmation.get() == 2) {
-				confirmationMessage = "Vous participation a bien été prise en compte.";
+				confirmationMessage = "Votre participation a bien été prise en compte.";
+			}
+            
+			else if (confirmation.get() == 3) {
+				confirmationMessage = "Votre particiption a bien été annulée.";
+			}
+            
+			else if (confirmation.get() == 4) {
+				confirmationMessage = "L'évènement a bien été suprimé.";
 			}
             
             model.addAttribute("confirmationMessage", confirmationMessage);
@@ -58,8 +90,11 @@ public class EventController {
             model.addAttribute("errorId", errorId);
         }
 		
+		model.addAttribute("currentDate", eventService.getDate());
 		model.addAttribute("isAdministrator", userSession.isAdministrator());
 		return "events";
+		
+		
 	}
 	
 	@PostMapping("/saveEvent")
@@ -98,5 +133,38 @@ public class EventController {
 		return "redirect:/events?confirmation=2";
 	}
 	
+	@GetMapping("/delete-participation")
+	public String deleteParticipation(@RequestParam(required = false) Optional<Long> eventId) {
+		if(!userSession.isConnected()) {
+			return "redirect:/login";
+		}
+		
+		if(eventId.isEmpty()) {
+			return "redirect:/events?errorId=true";
+		}
+		
+		if(!eventService.deleteParticipation(eventId.get(),userSession.getId())) {
+			return "redirect:/events?errorId=true";
+		}
+		
+		return "redirect:/events?confirmation=3";
+	}
 	
+	@GetMapping("/delete-event")
+	public String deleteEvent(@RequestParam(required =false) Optional<Long> eventId) {
+		if(!userSession.isConnected()) {
+			return "redirect:/login";
+		}
+		
+		if(!userSession.isAdministrator()) {
+			return "redirect:/events";
+		}
+		
+		if(eventId.isEmpty()) {
+			return "redirect:/events?errorId=true";
+		}
+		
+		eventService.deleteEvent(eventId.get());
+		return "redirect:/events?confirmation=4";
+	}
 }

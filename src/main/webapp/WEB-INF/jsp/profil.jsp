@@ -26,23 +26,8 @@
     </div>
 		</div>
 	
+		<%@include file="widgets.jsp" %>
 		
-		<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 px-1">
-			<div class="sticky-top container-fluid">
-				<div class="row">
-					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Evènements à venir</span>
-					</div>
-					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Meilleurs utilisateurs</span>
-					</div>
-					<div class=" col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Derniers messages du forum</span>
-					</div>
-				</div>
-				
-			</div>	
-		</div>
 	</div>
 </div>
 <%@include  file="footer.jsp" %>

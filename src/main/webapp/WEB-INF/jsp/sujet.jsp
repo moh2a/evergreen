@@ -10,6 +10,11 @@
         </div>
         <div class="col-xl-7 col-lg-8 col-xs-12 px-1">
             <div class="boite-simple">
+            <div id="sujet-row-1">
+            <div>
+                <a href="forum"><p class="back"><img src="assets/icon/arrow-left.svg" alt="back-icon" width="16px" /> Retour</p></a>
+            </div>
+        </div>
                 <div class="card border-success">
                     <div class="card-body">
                         <h4 class="card-title titres">${sujet.titre}</h4>
@@ -68,22 +73,8 @@
             </div>
         </div>
 
-        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 px-1">
-            <div class="sticky-top container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-                        <span>Evènements à venir</span>
-                    </div>
-                    <div class="col-lg-12 col-md-4 col-sm-4 px-1">
-                        <%@include  file="best-users.jsp" %>
-                    </div>
-                    <div class=" col-lg-12 col-md-4 col-sm-4  px-1">
-                        <%@include  file="derniersMessages.jsp" %>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <%@include file="widgets.jsp" %>
+        
     </div>
 </div>
 <script>

@@ -51,18 +51,28 @@
 					
 					<c:choose>
 					<c:when test="${contains}">
-						<p>Vous participez à cet évènement</p>
+					<button name="Départiciper" class="subutton">
+						<a href="delete-participation?eventId=${event.id}" class="textbutton" title="Cliquez pour vous désinscrire"> Me désinscrire </a>
+			    	</button>
 			    	</c:when>
 			    	
 			    	<c:otherwise>
 			    	<button name="Participer" class="subutton">
-			    	<a href="participate?eventId=${event.id}" class="textbutton" title="Cliquez pour participer à cet événement"> Participer </a> 
+			    		<a href="participate?eventId=${event.id}" class="textbutton" title="Cliquez pour participer à cet événement"> Participer </a> 
 			    	</button>
 			    	</c:otherwise>
 			    	</c:choose>
+			    	<c:if test="${isAdministrator}">
+			    		<a href="delete-event?eventId=${event.id}" class="delete-text" title="Cliquez pour supprimer l'évènement"> Supprimer </a>
+		    		</c:if>
+		    		
+		    		
 		    	</div>
 		    	
 		    	</c:forEach>
+		    	<c:if test="${noEventAfter}">
+		    		<p id="textMessage">${messageNoAfter}</p>
+		    	</c:if>
 		    
 		    	<span class="titre-partie">
 		    	<h2>Évènements passés</h2>
@@ -87,26 +97,16 @@
 		    	</div>
 		    	
 		    	</c:forEach>
-		    
+		    	
+		    	<c:if test="${noEventBefore}">
+		    		<p id="textMessage">${messageNoBefore}</p>
+		    	</c:if>
+		    	
 			</div>	
 		</div>
 		
-		<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 px-1">
-			<div class="sticky-top container-fluid">
-				<div class="row">
-					<div class="col-lg-12 col-md-4 col-sm-4 boite-simple px-1">
-						<span>Evènements à venir</span>
-					</div>
-					<div class="col-lg-12 col-md-4 col-sm-4 px-1">
-						<%@include  file="best-users.jsp" %>
-					</div>
-					<div class=" col-lg-12 col-md-4 col-sm-4 px-1">
-						<%@include  file="derniersMessages.jsp" %>
-					</div>
-				</div>
-				
-			</div>	
-		</div>
+		<%@include file="widgets.jsp" %>
+		
 	</div>
 </div>
 <%@include  file="footer.jsp" %>

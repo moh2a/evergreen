@@ -31,6 +31,7 @@ public class EventUser {
     	this.eventId = eventId;
     	this.userId = userId;
     }
+    
     public EventUser() {
     	
     }
