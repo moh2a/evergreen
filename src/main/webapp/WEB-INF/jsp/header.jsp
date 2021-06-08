@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/jquery/jQuery-3.6.0.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" href="/profil.css">
+    <link rel="stylesheet" href="/css/profil.css">
 </head>
 <body class="body">
 

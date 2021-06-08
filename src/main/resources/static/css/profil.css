@@ -1,0 +1,20 @@
+.p1{
+	background: linear-gradient(180deg, #43F7B8 0%, #36FC59 100%), #C4C4C4;
+    border: none;
+    margin-left:16px;
+}
+.info-profil {
+	
+	display : flex;
+	flex-direction : column;
+	align-items: center;
+	
+	
+}
+.image-profil{
+vertical-align: middle;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;	
+	
+}

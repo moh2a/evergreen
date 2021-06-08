@@ -11,18 +11,20 @@
 			<div class="boite-simple">
     <h1 class="titres">Profil</h1>
     
-     <h3>${firstName}</h3>
-     <h3 class="infprofil">${lastName}</h3>
-     <h3 class="infprofil">${birthDate}</h3>
+    <div class="info-profil">
+     <img class= image-profil src="/assets/avatar1.jpg" />
+     <div >${firstName} &#32; ${lastName}</div>
+     <div>${birthDate}</div>
+     
 	<c:forEach var="greenPoint" items="${greenPoints}">
      <p>Green Points : ${greenPoint.getIdGreenPoint()} ${greenPoint.getStatut()}</p>
 	</c:forEach>
      
      
-     <nav class="navbar">
+     <nav class="p1">
               <button type="button" onclick="#" class="btn bouton-evergreen">Editer le profil</button>
      </nav>
-      
+     </div>
     </div>
 		</div>
 	
