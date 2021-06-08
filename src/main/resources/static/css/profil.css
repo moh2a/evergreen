@@ -18,3 +18,7 @@ vertical-align: middle;
   border-radius: 50%;	
 	
 }
+.nom{
+	font:Roboto;
+    font-weight: bold;
+}

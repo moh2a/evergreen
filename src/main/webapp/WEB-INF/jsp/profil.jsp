@@ -13,7 +13,7 @@
     
     <div class="info-profil">
      <img class= image-profil src="/assets/avatar1.jpg" />
-     <div >${firstName} &#32; ${lastName}</div>
+     <div class="nom" >${firstName} &#32; ${lastName}</div>
      <div>${birthDate}</div>
      
 	<c:forEach var="greenPoint" items="${greenPoints}">
@@ -21,7 +21,7 @@
 	</c:forEach>
      
      
-     <nav class="p1">
+     <nav class="p1" >
               <button type="button" onclick="#" class="btn bouton-evergreen">Editer le profil</button>
      </nav>
      </div>
